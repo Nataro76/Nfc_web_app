@@ -97,9 +97,6 @@ if (!("NDEFReader" in window))
 
      scanButton.addEventListener("click", async () => {
     log("User clicked scan button");
-    let waitTag=false;
-    let tagValue=null;
-    var assoc=null;
     try {
       const reader = new NDEFReader();
       await reader.scan();
@@ -110,6 +107,9 @@ if (!("NDEFReader" in window))
       });
   
       reader.addEventListener("reading", ({ message, serialNumber }) => {
+        let waitTag=false;
+    let tagValue=null;
+    var assoc=null;
         log(`> Serial Number: ${serialNumber}`);
         log(`> Records: (${message.records.length})`);
         if(String(serialNumber)=="04:82:3a:2a:ce:66:80"){
