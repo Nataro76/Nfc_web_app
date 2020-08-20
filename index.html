@@ -94,8 +94,6 @@ if (!("NDEFReader" in window))
   );
 </script>
  <script >
-     let tag1="04:82:3a:2a:ce:66:80";
-     let tag2="04:a9:34:2a:ce:66:80";
      scanButton.addEventListener("click", async () => {
     log("User clicked scan button");
   
@@ -111,11 +109,14 @@ if (!("NDEFReader" in window))
       reader.addEventListener("reading", ({ message, serialNumber }) => {
         log(`> Serial Number: ${serialNumber}`);
         log(`> Records: (${message.records.length})`);
-        if(String(serialNumber)==tag1){
+        if(String(serialNumber)=="04:82:3a:2a:ce:66:80"){
         log(`This is tag 3EE66B`);
         }
+        if(String(serialNumber)=="04:a9:34:2a:ce:66:80"){
+                      log('This is tag 3EE694');
+        }
         else{
-            log('This is tag 3EE694');
+            log('This is another tag');
         }
       });
     } catch (error) {
