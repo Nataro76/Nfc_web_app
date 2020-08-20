@@ -112,13 +112,14 @@ if (!("NDEFReader" in window))
     let badge=null;
         log(`> Serial Number: ${serialNumber}`);
         log(`> Records: (${message.records.length})`);
-        if(String(serialNumber)=="04:82:3a:2a:ce:66:80"){
+        tagValue=String(serialNumber)});
+        if(tagValue=="04:82:3a:2a:ce:66:80"){
         log(`This is tag 3EE66B`);
         tagValue="3EE66B";
         assocData(tagValue);
         tagValue=null;
         }
-        if(String(serialNumber)=="04:a9:34:2a:ce:66:80"){
+        if(tagValue=="04:a9:34:2a:ce:66:80"){
                       log('This is tag 3EE694');
                       tagValue="3EE694";
                       assocData(tagValue);
@@ -129,9 +130,8 @@ if (!("NDEFReader" in window))
         else{
             log('This is another tag');
         }
-
-      });
-    } catch (error) {
+    } 
+    catch (error) {
       log("Argh! " + error);
     }
   });
@@ -151,7 +151,7 @@ if (!("NDEFReader" in window))
 
 function assocData(tagval){
 log('Please scan your badge now . . .');
-//reader.addEventListener("reading", ({ message, serialNumber }) =>{
+reader.addEventListener("reading", ({ message, serialNumber }) =>{
 badge=String(serialNumber);
 log(`Your badge ID is: ${serialNumber}`);
 if(confirm("Do you want to associate those values?")){
@@ -163,7 +163,7 @@ else{
 log('Start again if you want to pair a new badge');   
 }
 
-            //});
+            });
         
 }
 
