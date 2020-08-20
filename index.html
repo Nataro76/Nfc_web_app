@@ -147,8 +147,7 @@ log(`> Records: (${message.records.length})`);
 
 function assocData(tagval){
 log('Please scan your badge now . . .');
-const reader2 = new NDEFReader();
-reader2.addEventListener("reading", ({ message, serialNumber }) =>{
+reader.addEventListener("reading", ({ message, serialNumber }) =>{
 badge=String(serialNumber);
 });
 log(`Your badge ID is: ${badge}`);
