@@ -108,8 +108,11 @@ if (!("NDEFReader" in window))
       reader.addEventListener("error", (event) => {
         log(`Argh! ${event.message}`);
       });
+      reader1.addEventListener("reading", ({ message, serialNumber }) => {
 
-        tagValue=returnSerial();
+log(`> Serial Number: ${serialNumber}`);
+log(`> Records: (${message.records.length})`);
+    tagValue=String(serialNumber);});
         if(tagValue=="04:82:3a:2a:ce:66:80"){
         log(`This is tag 3EE66B`);
         tagValue="3EE66B";
@@ -141,17 +144,6 @@ if (!("NDEFReader" in window))
       log("Argh! " + error);
     }
   });
-
-
-function returnSerial(){
-    const reader1 = new NDEFReader();    
-    reader1.addEventListener("reading", ({ message, serialNumber }) => {
-
-log(`> Serial Number: ${serialNumber}`);
-log(`> Records: (${message.records.length})`);});
-let returnValue=String(serialNumber);
-    return returnValue ;
-}
 
 function assocData(tagval){
 log('Please scan your badge now . . .');
