@@ -112,7 +112,7 @@ if (!("NDEFReader" in window))
 
 log(`> Serial Number: ${serialNumber}`);
 log(`> Records: (${message.records.length})`);
-    tagValue=String(serialNumber);});
+    tagValue=String(serialNumber);
         if(tagValue=="04:82:3a:2a:ce:66:80"){
         log(`This is tag 3EE66B`);
         tagValue="3EE66B";
@@ -127,7 +127,9 @@ log(`> Records: (${message.records.length})`);
 
 
         }
+    });
     } 
+    
     catch (error) {
       log("Argh! " + error);
     }
