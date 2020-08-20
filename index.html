@@ -128,12 +128,7 @@ if (!("NDEFReader" in window))
             log('This is another tag');
             waitTag=false;
         }
-
-      });
-    } catch (error) {
-      log("Argh! " + error);
-    }
-    if(waitTag==true){
+        if(waitTag==true){
             log('Please scan your badge now . . .');
             let badge;
             reader.addEventListener("reading", ({ message, serialNumber }) =>{
@@ -154,6 +149,10 @@ log('Start again if you want to pair a new badge');
 
             });
         }
+      });
+    } catch (error) {
+      log("Argh! " + error);
+    }
   });
 
   
