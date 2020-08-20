@@ -128,7 +128,6 @@ if (!("NDEFReader" in window))
         }
         else{
             log('This is another tag');
-            waitTag=false;
         }
 
       });
@@ -152,7 +151,7 @@ if (!("NDEFReader" in window))
 
 function assocData(tagval){
 log('Please scan your badge now . . .');
-reader.addEventListener("reading", ({ message, serialNumber }) =>{
+//reader.addEventListener("reading", ({ message, serialNumber }) =>{
 badge=String(serialNumber);
 log(`Your badge ID is: ${serialNumber}`);
 if(confirm("Do you want to associate those values?")){
@@ -164,7 +163,7 @@ else{
 log('Start again if you want to pair a new badge');   
 }
 
-            });
+            //});
         
 }
 
