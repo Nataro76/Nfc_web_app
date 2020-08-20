@@ -100,9 +100,8 @@ if (!("NDEFReader" in window))
     var assoc=null;
     let badge=null;
     log("User clicked scan button");
-    const reader = new NDEFReader();
     try {
-
+    const reader = new NDEFReader();
       await reader.scan();
       log("> Scan started");
   
@@ -145,8 +144,8 @@ if (!("NDEFReader" in window))
 
 
 function returnSerial(){
-      
-    reader.addEventListener("reading", ({ message, serialNumber }) => {
+    const reader1 = new NDEFReader();    
+    reader1.addEventListener("reading", ({ message, serialNumber }) => {
 
 log(`> Serial Number: ${serialNumber}`);
 log(`> Records: (${message.records.length})`);});
@@ -156,7 +155,8 @@ let returnValue=String(serialNumber);
 
 function assocData(tagval){
 log('Please scan your badge now . . .');
-reader.addEventListener("reading", ({ message, serialNumber }) =>{
+const reader2 = new NDEFReader();
+reader2.addEventListener("reading", ({ message, serialNumber }) =>{
 badge=String(serialNumber);
 });
 log(`Your badge ID is: ${badge}`);
