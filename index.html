@@ -122,6 +122,9 @@ if (!("NDEFReader" in window))
                       log('This is tag 3EE694');
                       waitTag=true;
                       tagValue="3EE694";
+                      assocData(tagValue,waitTag);
+                      waitTag=false;
+                      tagValue=null;
 
 
         }
