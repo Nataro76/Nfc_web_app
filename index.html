@@ -107,9 +107,10 @@ if (!("NDEFReader" in window))
       });
   
       reader.addEventListener("reading", ({ message, serialNumber }) => {
-        let waitTag=false;
+    let waitTag=false;
     let tagValue=null;
     var assoc=null;
+    let badge=null;
         log(`> Serial Number: ${serialNumber}`);
         log(`> Records: (${message.records.length})`);
         if(String(serialNumber)=="04:82:3a:2a:ce:66:80"){
@@ -128,34 +129,12 @@ if (!("NDEFReader" in window))
             log('This is another tag');
             waitTag=false;
         }
-        if(waitTag==true){
-            log('Please scan your badge now . . .');
-            let badge;
-            reader.addEventListener("reading", ({ message, serialNumber }) =>{
-badge=String(serialNumber);
-log(`Your badge ID is: ${serialNumber}`);
-if(confirm("Do you want to associate those values?")){
-assoc = {badge:tagValue};
-log(`You succesfully associated tag ${tagValue} with badge ${badge}`);
-badge = String(serialNumber);
-waitTag=false;
-tagValue=null;
-}
-else{
-    waitTag=false;
-tagValue=null;
-log('Start again if you want to pair a new badge');   
-}
 
-            });
-        }
       });
     } catch (error) {
       log("Argh! " + error);
     }
   });
-
-  
   
   writeButton.addEventListener("click", async () => {
     log("User clicked write button");
@@ -168,6 +147,29 @@ log('Start again if you want to pair a new badge');
       log("Argh! " + error);
     }
   });
+
+
+function assocData(tagval,tagstate){
+    if(tagstate==true){
+            log('Please scan your badge now . . .');
+            reader.addEventListener("reading", ({ message, serialNumber }) =>{
+badge=String(serialNumber);
+log(`Your badge ID is: ${serialNumber}`);
+if(confirm("Do you want to associate those values?")){
+assoc = {badge:tagval};
+log(`You succesfully associated tag ${tagval} with badge ${badge}`);
+tagstate=false;
+tagValue=null;
+}
+else{
+log('Start again if you want to pair a new badge');   
+}
+
+            });
+        }
+}
+
+
 </script>
   </body>
 </html>
