@@ -96,6 +96,9 @@ if (!("NDEFReader" in window))
  <script >
 
      scanButton.addEventListener("click", async () => {
+    let tagValue=null;
+    var assoc=null;
+    let badge=null;
     log("User clicked scan button");
     try {
       const reader = new NDEFReader();
@@ -107,9 +110,7 @@ if (!("NDEFReader" in window))
       });
   
       reader.addEventListener("reading", ({ message, serialNumber }) => {
-    let tagValue=null;
-    var assoc=null;
-    let badge=null;
+
         log(`> Serial Number: ${serialNumber}`);
         log(`> Records: (${message.records.length})`);
         tagValue=String(serialNumber)});
