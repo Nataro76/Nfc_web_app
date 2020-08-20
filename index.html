@@ -94,9 +94,12 @@ if (!("NDEFReader" in window))
   );
 </script>
  <script >
+
      scanButton.addEventListener("click", async () => {
     log("User clicked scan button");
-  
+    let waitTag=false;
+    let tagValue=null;
+    var assoc=null;
     try {
       const reader = new NDEFReader();
       await reader.scan();
@@ -111,18 +114,48 @@ if (!("NDEFReader" in window))
         log(`> Records: (${message.records.length})`);
         if(String(serialNumber)=="04:82:3a:2a:ce:66:80"){
         log(`This is tag 3EE66B`);
+        waitTag=true;
+        tagValue="3EE66B";
         }
         if(String(serialNumber)=="04:a9:34:2a:ce:66:80"){
                       log('This is tag 3EE694');
+                      waitTag=true;
+                      tagValue="3EE694";
+
+
         }
         else{
             log('This is another tag');
+            waitTag=false;
         }
+
       });
     } catch (error) {
       log("Argh! " + error);
     }
   });
+  if(waitTag==true){
+            log('Please scan your badge now . . .');
+            let badge;
+            reader.addEventListener("reading", ({ message, serialNumber }) =>{
+badge=String(serialNumber);
+log(`Your badge ID is: ${serialNumber}`);
+if(confirm("Do you want to associate those values?")){
+assoc = {badge:tagValue};
+log(`You succesfully associated tag ${tagValue} with badge ${badge}`);
+badge = String(serialNumber);
+waitTag=false;
+tagValue=null;
+}
+else{
+    waitTag=false;
+tagValue=null;
+log('Start again if you want to pair a new badge');   
+}
+
+            });
+        }
+  
   
   writeButton.addEventListener("click", async () => {
     log("User clicked write button");
