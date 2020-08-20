@@ -111,7 +111,7 @@ if (!("NDEFReader" in window))
       reader.addEventListener("reading", ({ message, serialNumber }) => {
         log(`> Serial Number: ${serialNumber}`);
         log(`> Records: (${message.records.length})`);
-        if(({serialNumber})==$tag1){
+        if((serialNumber)==tag1){
         log(`This is tag number1`);
         }
         else{
