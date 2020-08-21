@@ -15,9 +15,10 @@
     log(`> Records: (${message.records.length})`);
         tagValue=String(serialNumber);
         window.alert("Please remove tag now");
+    });
         assocData(tagValue);
         tagValue=null;
-    });
+
             // if(tagValue=="04:82:3a:2a:ce:66:80"){
             // log(`This is tag 3EE66B`);
             // tagValue="3EE66B";
