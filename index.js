@@ -2,7 +2,6 @@
      scanButton.addEventListener("click", async () => {
         let tagValue=null;
         var assoc=null;
-        let badge=null;
         log("User clicked scan button");
         try {
         const reader1 = new NDEFReader();
