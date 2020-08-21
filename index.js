@@ -5,7 +5,7 @@
         log("User clicked scan button");
         try {
         const reader1 = new NDEFReader();
-          await reader1.scan();
+          reader1.scan();
           log("> Scan started");
           reader1.addEventListener("error", (event) => {
             log(`Argh! ${event.message}`);
@@ -39,7 +39,7 @@
         log("User clicked write button");     
         try {
           const writer = new NDEFWriter();
-          await writer.write("Hello world!");
+          writer.write("Hello world!");
           log("> Message written");
         } catch (error) {
           log("Argh! " + error);
