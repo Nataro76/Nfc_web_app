@@ -15,22 +15,20 @@
     log(`> Records: (${message.records.length})`);
         tagValue=String(serialNumber);
         window.alert("Please remove tag now");
+        assocData(tagValue);
+        tagValue=null;
     });
-            if(tagValue=="04:82:3a:2a:ce:66:80"){
-            log(`This is tag 3EE66B`);
-            tagValue="3EE66B";
-            assocData(tagValue);
-            tagValue=null;
-            }
-            if(tagValue=="04:a9:34:2a:ce:66:80"){
-                          log('This is tag 3EE694');
-                          tagValue="3EE694";
-                          assocData(tagValue);
-                          tagValue=null;
-            }
-            else{
-                log('How you doin?');
-            }
+            // if(tagValue=="04:82:3a:2a:ce:66:80"){
+            // log(`This is tag 3EE66B`);
+            // tagValue="3EE66B";
+            // assocData(tagValue);
+
+            // }
+            // if(tagValue=="04:a9:34:2a:ce:66:80"){
+            //               log('This is tag 3EE694');
+            //               tagValue="3EE694";
+            //               assocData(tagValue);
+            // }
         }     
         catch (error) {
           log("Argh! " + error);
