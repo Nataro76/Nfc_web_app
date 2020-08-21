@@ -47,7 +47,7 @@
       });   
     function assocData(tagval){
     var reader2 = new NDEFReader;    
-    await reader2.scan();
+    reader2.scan();
     log('Please scan your badge now . . .');
     reader2.addEventListener("reading", function readtwice(){
     let badge;
