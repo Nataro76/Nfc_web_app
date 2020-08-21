@@ -46,8 +46,9 @@
         }
       });   
     function assocData(tagval){
+    var reader2 = new NDEFReader;    
+    await reader2.scan();
     log('Please scan your badge now . . .');
-    var reader2 = new NDEFReader;
     reader2.addEventListener("reading", function readtwice(){
     let badge=String(reader2.serialNumber);
     });
