@@ -17,12 +17,14 @@
             if(tagValue=="04:82:3a:2a:ce:66:80"){
             log(`This is tag 3EE66B`);
             tagValue="3EE66B";
+            window.alert("Please remove tag now");
             assocData(tagValue);
             tagValue=null;
             }
             if(tagValue=="04:a9:34:2a:ce:66:80"){
                           log('This is tag 3EE694');
                           tagValue="3EE694";
+                          window.alert("Please remove tag now");
                           assocData(tagValue);
                           tagValue=null;
             }
@@ -48,11 +50,11 @@
     async function assocData(tagval){
     var reader2 = new NDEFReader;    
     reader2.scan();
-    await confirm("Press ok, then place the badge for reading");
-    await reader2.addEventListener("reading");
+    window.alert("Press ok, then place the badge for reading");
+    await reader2.addEventListener("reading",function thisfun() {
     log('Please scan your badge now . . .');
     let badge=null;
-    badge=String(reader2.serialNumber);
+    badge=String(reader2.serialNumber);});
     log(`Your badge ID is: ${badge}`);
     if(badge!=null){
     if(confirm("Do you want to associate those values?")){
