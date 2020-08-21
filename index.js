@@ -2,7 +2,7 @@
      scanButton.addEventListener("click", async () => {
         let tagValue=null;
         var assoc=null;
-        log("I want to break free");
+          log("Hello there! / General Kenobi");
         log("User clicked scan button");
         try {
         const reader1 = new NDEFReader();
@@ -12,7 +12,7 @@
             log(`Argh! ${event.message}`);
           });
           reader1.addEventListener("reading", ({ message, serialNumber }) => {
-    log(`> Serial Number: ${serialNumber}`);
+    await log(`> Serial Number: ${serialNumber}`);
     log(`> Records: (${message.records.length})`);
         tagValue=String(serialNumber);
         reader1.removeEventListener("reading", ({ message, serialNumber })=>{});
@@ -49,7 +49,6 @@
     async function assocData(tagval){
     var reader2 = new NDEFReader;    
     reader2.scan();
-    window.alert("Press ok, then place the badge for reading");
     await reader2.addEventListener("reading",function thisfun() {
     log('Please scan your badge now . . .');
     let badge=null;
