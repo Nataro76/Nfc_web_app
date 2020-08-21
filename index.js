@@ -50,7 +50,8 @@
     await reader2.scan();
     log('Please scan your badge now . . .');
     reader2.addEventListener("reading", function readtwice(){
-    let badge=String(reader2.serialNumber);
+    let badge;
+    badge=String(reader2.serialNumber);
     });
     log(`Your badge ID is: ${badge}`);
     if(confirm("Do you want to associate those values?")){
