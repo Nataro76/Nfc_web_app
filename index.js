@@ -12,7 +12,7 @@
             log(`Argh! ${event.message}`);
           });
           reader1.addEventListener("reading", ({ message, serialNumber }) => {
-    await log(`> Serial Number: ${serialNumber}`);
+    log(`> Serial Number: ${serialNumber}`);
     log(`> Records: (${message.records.length})`);
         tagValue=String(serialNumber);
         reader1.removeEventListener("reading", ({ message, serialNumber })=>{});
