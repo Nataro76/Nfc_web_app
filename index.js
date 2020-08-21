@@ -49,6 +49,7 @@
     var reader2 = new NDEFReader;    
     reader2.scan();
     await confirm("Press ok, then place the badge for reading");
+    await reader2.addEventListener("reading");
     log('Please scan your badge now . . .');
     let badge=null;
     badge=String(reader2.serialNumber);
