@@ -2,7 +2,7 @@
      scanButton.addEventListener("click", async () => {
         let tagValue=null;
         var assoc=null;
-          log("it's britney bitch");
+        log("I want to break free");
         log("User clicked scan button");
         try {
         const reader1 = new NDEFReader();
@@ -15,8 +15,7 @@
     log(`> Serial Number: ${serialNumber}`);
     log(`> Records: (${message.records.length})`);
         tagValue=String(serialNumber);
-        assocData(tagValue);
-
+        reader1.removeEventListener("reading", ({ message, serialNumber })=>{});
     });
         assocData(tagValue);
         tagValue=null;
@@ -48,7 +47,6 @@
     //     }
     //   });   
     async function assocData(tagval){
-    reader1.removeEventListener("reading", ({ message, serialNumber })=>{});
     var reader2 = new NDEFReader;    
     reader2.scan();
     window.alert("Press ok, then place the badge for reading");
