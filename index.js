@@ -5,7 +5,7 @@
         log("User clicked scan button");
         try {
         const reader1 = new NDEFReader();
-          reader1.scan();
+          await reader1.scan();
           log("> Scan started");
           reader1.addEventListener("error", (event) => {
             log(`Argh! ${event.message}`);
