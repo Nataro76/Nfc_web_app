@@ -5,13 +5,13 @@
         let badge=null;
         log("User clicked scan button");
         try {
-        const reader = new NDEFReader();
-          await reader.scan();
+        const reader1 = new NDEFReader();
+          await reader1.scan();
           log("> Scan started");
-          reader.addEventListener("error", (event) => {
+          reader1.addEventListener("error", (event) => {
             log(`Argh! ${event.message}`);
           });
-          reader.addEventListener("reading", ({ message, serialNumber }) => {
+          reader1.addEventListener("reading", ({ message, serialNumber }) => {
     log(`> Serial Number: ${serialNumber}`);
     log(`> Records: (${message.records.length})`);
         tagValue=String(serialNumber);
@@ -50,7 +50,7 @@
     log('Please scan your badge now . . .');
     var reader2 = new NDEFReader;
     reader2.addEventListener("reading", function readtwice(){
-    badge=String(reader.serialNumber);
+    badge=String(reader2.serialNumber);
     });
     log(`Your badge ID is: ${badge}`);
     if(confirm("Do you want to associate those values?")){
