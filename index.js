@@ -45,13 +45,14 @@
     //       log("Argh! " + error);
     //     }
     //   });   
-    function assocData(tagval){
+    async function assocData(tagval){
     var reader2 = new NDEFReader;    
-    reader2.scan();
+    await reader2.scan();
     window.alert("Press ok, then place the badge for reading");
+    reader2.addEventListener("reading", function read(){
     log('Please scan your badge now . . .');
     let badge=null;
-    badge=String(reader2.serialNumber);
+    badge=String(reader2.serialNumber);});
     log(`Your badge ID is: ${badge}`);
     if(badge!=null){
     if(confirm("Do you want to associate those values?")){
