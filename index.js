@@ -8,12 +8,10 @@
         const reader = new NDEFReader();
           await reader.scan();
           log("> Scan started");
-      
           reader.addEventListener("error", (event) => {
             log(`Argh! ${event.message}`);
           });
           reader.addEventListener("reading", ({ message, serialNumber }) => {
-    
     log(`> Serial Number: ${serialNumber}`);
     log(`> Records: (${message.records.length})`);
         tagValue=String(serialNumber);
@@ -28,23 +26,18 @@
                           tagValue="3EE694";
                           assocData(tagValue);
                           tagValue=null;
-    
-    
             }
             else{
                 log('How you doin?');
             }
         });
-        } 
-        
+        }     
         catch (error) {
           log("Argh! " + error);
         }
-      });
-      
+      }); 
       writeButton.addEventListener("click", async () => {
-        log("User clicked write button");
-      
+        log("User clicked write button");     
         try {
           const writer = new NDEFWriter();
           await writer.write("Hello world!");
@@ -52,12 +45,12 @@
         } catch (error) {
           log("Argh! " + error);
         }
-      });
-    
+      });   
     function assocData(tagval){
     log('Please scan your badge now . . .');
-    reader.addEventListener("reading", ({ message, serialNumber }) =>{
-    badge=String(serialNumber);
+    var reader2 = new NDEFReader;
+    reader2.addEventListener("reading", function readtwice(){
+    badge=String(reader.serialNumber);
     });
     log(`Your badge ID is: ${badge}`);
     if(confirm("Do you want to associate those values?")){
@@ -66,8 +59,5 @@
     }
     else{
     log('Start again if you want to pair a new badge');   
-    }
-            
-    }
-    
-    
+    }          
+    }     
