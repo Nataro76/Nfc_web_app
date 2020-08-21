@@ -35,16 +35,16 @@
           log("Argh! " + error);
         }
       }); 
-      writeButton.addEventListener("click", async () => {
-        log("User clicked write button");     
-        try {
-          const writer = new NDEFWriter();
-          writer.write("Hello world!");
-          log("> Message written");
-        } catch (error) {
-          log("Argh! " + error);
-        }
-      });   
+    //   writeButton.addEventListener("click", async () => {
+    //     log("User clicked write button");     
+    //     try {
+    //       const writer = new NDEFWriter();
+    //       await writer.write("Hello world!");
+    //       log("> Message written");
+    //     } catch (error) {
+    //       log("Argh! " + error);
+    //     }
+    //   });   
     function assocData(tagval){
     var reader2 = new NDEFReader;    
     reader2.scan();
