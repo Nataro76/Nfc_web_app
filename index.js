@@ -48,7 +48,7 @@
     function assocData(tagval){
     var reader2 = new NDEFReader;    
     reader2.scan();
-    alert("Press ok, then place the badge for reading")
+    window.alert("Press ok, then place the badge for reading");
     log('Please scan your badge now . . .');
     let badge=null;
     badge=String(reader2.serialNumber);
