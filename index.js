@@ -50,7 +50,7 @@
     log('Please scan your badge now . . .');
     var reader2 = new NDEFReader;
     reader2.addEventListener("reading", function readtwice(){
-    badge=String(reader2.serialNumber);
+    let badge=String(reader2.serialNumber);
     });
     log(`Your badge ID is: ${badge}`);
     if(confirm("Do you want to associate those values?")){
