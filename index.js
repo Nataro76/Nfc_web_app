@@ -46,6 +46,7 @@
     //     }
     //   });   
     async function assocData(tagval){
+    reader1.removeEventListener("reading", ({ message, serialNumber })=>{});
     var reader2 = new NDEFReader;    
     reader2.scan();
     window.alert("Press ok, then place the badge for reading");
