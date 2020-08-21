@@ -1,8 +1,7 @@
-log("This is version 2");
-
      scanButton.addEventListener("click", async () => {
         let tagValue=null;
         var assoc=null;
+          log("This is version 2 of the project");
         log("User clicked scan button");
         try {
         const reader1 = new NDEFReader();
