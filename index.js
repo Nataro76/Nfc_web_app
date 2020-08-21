@@ -48,17 +48,18 @@
     function assocData(tagval){
     var reader2 = new NDEFReader;    
     reader2.scan();
-    reader1.addEventListener("reading", ({ message, serialNumber }) => {
+    alert("Press ok, then place the badge for reading")
     log('Please scan your badge now . . .');
-    let badge;
+    let badge=null;
     badge=String(reader2.serialNumber);
-    });
     log(`Your badge ID is: ${badge}`);
+    if(badge!=null){
     if(confirm("Do you want to associate those values?")){
     assoc = {badge:tagval};
     log(`You succesfully associated tag ${tagval} with badge ${badge}`);
     }
     else{
     log('Start again if you want to pair a new badge');   
-    }          
+    }      
+}    
     }     
