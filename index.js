@@ -1,3 +1,4 @@
+log("This is version 2");
 
      scanButton.addEventListener("click", async () => {
         let tagValue=null;
