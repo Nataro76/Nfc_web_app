@@ -6,38 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sample illustrating the use of Web NFC.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <meta http-equiv="origin-trial" content="Ai2qMFWYMxGZUzL8lUyz/1sWKYhXdJtZB9SzQyiXS4pEWzxZ7wl40gCa6r//itPf9+ldPWpre8oEcc/iiqzjogwAAABWeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWNocm9tZS5naXRodWIuaW86NDQzIiwiZmVhdHVyZSI6IldlYk5GQyIsImV4cGlyeSI6MTU5MzYxMTUwNn0=">
-    
     <title>Web NFC Sample</title>
-    <script>
-      // Add a global error event listener early on in the page load, to help ensure that browsers
-      // which don't support specific functionality still end up displaying a meaningful message.
-      window.addEventListener('error', function(error) {
-        if (ChromeSamples && ChromeSamples.setStatus) {
-          console.error(error);
-          ChromeSamples.setStatus(error.message + ' (Your browser may not support this feature.)');
-          error.preventDefault();
-        }
-      });
-    </script>
-    
-    
-    
-    
-    <link rel="icon" href="../images/favicon.ico">
-    
-    <link rel="stylesheet" href="../styles/main.css">
-    
-    
+    <script type="text/javascript" src="error_catcher.js"></script>   
+    <link rel="icon" href="../images/favicon.ico">   
+    <link rel="stylesheet" href="../styles/main.css">   
   </head>
-
   <body>
 <button id="scanButton">Pair</button>
 <button id="unpairButton">Unpair</button>
 <button id="writeButton">Add</button>
 <script type="text/javascript" src="chrome_sample_init.js"></script>
-</script>
 <h3>Live log Output</h3>
 <div id="output" class="output">
   <div id="content"></div>
