@@ -18,7 +18,11 @@
       tagValue=String(serialNumber);
       reader1.scan;
       reader1.removeEventListener("reading", ({ message, serialNumber })=>{
+        log("Now the place the badge you want to pair . . .");
       badgeValue = String(serialNumber);
+      assoc = {tagValue:badgeValue};
+      log('You correctly associated the values ');
+      log(assoc);
       });
   });
       // assocData(tagValue);
