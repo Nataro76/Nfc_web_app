@@ -3,7 +3,7 @@
       let tagValue=null;
       let badgeValue=null;
       var assoc=null;
-        log("This is another test");
+        log("Another version");
       log("User clicked scan button");
       try {
       const reader1 = new NDEFReader();
@@ -12,13 +12,14 @@
         reader1.addEventListener("error", (event) => {
           log(`Argh! ${event.message}`);
         });
+        while(tagValue==null){
         reader1.addEventListener("reading", ({ message, serialNumber }) => {
   log(`> Serial Number: ${serialNumber}`);
   log(`> Records: (${message.records.length})`);
       tagValue=String(serialNumber);
-    });
+    });}
 
-        log("Now the place the badge you want to pair . . .");
+        log("Now place the badge you want to pair . . .");
         try {
       badgeValue = getBadgeValue();
         }
@@ -91,8 +92,9 @@ const reader2 = new NDEFReader;
 let badge=null;
 await reader2.scan;
 log('Badge scan has started . . .');
+while(badge==null){
 reader2.addEventListener("reading",({serialNumber}) => {
 badge = String(serialNumber);
-});
+});}
 return badge;
 }
