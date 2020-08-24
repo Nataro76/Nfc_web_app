@@ -3,7 +3,7 @@
       let tagValue=null;
       let badgeValue=null;
       var assoc=null;
-        log("Hello there! / General Kenobi");
+        log("This is another test");
       log("User clicked scan button");
       try {
       const reader1 = new NDEFReader();
@@ -17,13 +17,18 @@
   log(`> Records: (${message.records.length})`);
       tagValue=String(serialNumber);
     });
-      reader1.removeEventListener("reading", ({ serialNumber })=>{
+
         log("Now the place the badge you want to pair . . .");
-      badgeValue = String(serialNumber);
+        try {
+      badgeValue = getBadgeValue();
+        }
+        catch {
+          log('There was an error when reading badge');
+        }
       assoc = {tagValue:badgeValue};
       log('You correctly associated the values ');
       log(assoc);
-      });
+      
 
       // assocData(tagValue);
       // tagValue=null;
@@ -72,3 +77,22 @@
 //   }      
 // }    
 //   }     
+async function getBadgeValue(){
+  let badge = null;
+  try {
+  await findBadgeValue();
+  }
+  catch {
+    log('Badge error');
+  }
+}
+async function findBadgeValue(){
+const reader2 = new NDEFReader;
+let badge=null;
+await reader2.scan;
+log('Badge scan has started . . .');
+reader2.addEventListener("reading",({serialNumber}) => {
+badge = String(serialNumber);
+});
+return badge;
+}
