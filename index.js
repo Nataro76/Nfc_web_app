@@ -16,15 +16,15 @@
   log(`> Serial Number: ${serialNumber}`);
   log(`> Records: (${message.records.length})`);
       tagValue=String(serialNumber);
-      reader1.scan;
-      reader1.removeEventListener("reading", ({ message, serialNumber })=>{
+    });
+      reader1.removeEventListener("reading", ({ serialNumber })=>{
         log("Now the place the badge you want to pair . . .");
       badgeValue = String(serialNumber);
       assoc = {tagValue:badgeValue};
       log('You correctly associated the values ');
       log(assoc);
       });
-  });
+
       // assocData(tagValue);
       // tagValue=null;
 
