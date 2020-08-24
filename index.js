@@ -12,12 +12,14 @@
         reader1.addEventListener("error", (event) => {
           log(`Argh! ${event.message}`);
         });
-        while(tagValue==null){
+        //while(tagValue==null){
         reader1.addEventListener("reading", ({ message, serialNumber }) => {
   log(`> Serial Number: ${serialNumber}`);
   log(`> Records: (${message.records.length})`);
       tagValue=String(serialNumber);
-    });}
+      log(`> tagValue is: ${tagValue}`);
+    });
+  //}
 
         log("Now place the badge you want to pair . . .");
         try {
