@@ -8,7 +8,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.15");                                                            
+  log("Ver 2.16");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();                                                                       
@@ -83,7 +83,10 @@ addButton.addEventListener("click",async() =>{
   log('> User clicked the "Add" button . . .');
   if(confirm("Do you want to add a new user?")){
 username = prompt("Type in your username here: ");
-personID[personID.length()]=username;
+let key=personID.length();
+personID[key]=username;
+window.alert("Now scan your badge and press ok");
+beaconID[key]=tagValue;
   }
 });  
 
