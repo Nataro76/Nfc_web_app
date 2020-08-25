@@ -27,15 +27,15 @@ if(keyVal!=-1){
   person= personID[tagID.indexOf(tagValue)];
   match=true;
 }
-else {                                                                                                    
+else { 
+  beaconAssociation(tagValue);
   match=false;                                                                                          
 }
 if(match==true){                                                                                          
   log("We found a matching person for your tag");                                                         
   log(`> Name: ${person}`);
   if(confirm(`${person} Is that you?`)){                                                          
-    assoc = true;
-beaconVal=beaconAssociation();                                                                                  
+    assoc = true;                                                                                 
 }
   else{
    log("This person was ignored . . .");
@@ -43,10 +43,10 @@ beaconVal=beaconAssociation();
 }
 }    
 });                                                                                                                                                                                           
-reader1.removeEventListener("reading",({message,serialNumber})=>{});
-if(funStarter==true){
-beaconVal=beaconAssociation();                                                                          
-}                                                                                                           
+//reader1.removeEventListener("reading",({message,serialNumber})=>{});
+//if(funStarter==true){
+//beaconVal=beaconAssociation();                                                                          
+//}                                                                                                           
 try{                                                                                                                                                                                                            }                                                                                                       catch{                                                                                                                                                                                                          }                                                                                                         }                                                                                                       catch (error) {                                                                                           log("Argh! " + error);                                                                                }                                                                                                     });                                                                                                   //   writeButton.addEventListener("click", async () => {
 //     log("User clicked write button");
 //     try {                                                                                            
@@ -58,7 +58,7 @@ try{                                                                            
 //     }
 //   });
 
-async function beaconAssociation() {
+async function beaconAssociation(let beacon) {
 var beaconKey = ['04:82:3a:2a:ce:66:80','04:a9:34:2a:ce:66:80'];
 var beaconID = ['3EE66B','3EE694'];                                                                     
 let keyRead,row,beacon,addID;                                                                                                                                                    
