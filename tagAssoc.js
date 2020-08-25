@@ -10,7 +10,11 @@ pair(badge,tag) {
     var assoc=null;
 assoc = {BadgeID:String(badge),BeaconID:String(tag)};
 log(assoc);
-return assoc;
+if(assoc!==null){
+return assoc;}
+else{
+    return [this.BeaconID,this.tagID];
+}
 }
 
 saveAssoc(){
