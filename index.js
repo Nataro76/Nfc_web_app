@@ -6,7 +6,7 @@ let badgeValue=null;
 let keyVal;                                                                                           
 var assoc=null;                                                                                   
 let funStarter=null;                                                                                          
-log("Peanut butter jelly time!");                                                            
+log("Hit me baby one more time!");                                                            
 log("User clicked scan button");                                                                        
 try {                                                                                                   
   const reader1 = new NDEFReader();                                                                       
@@ -44,9 +44,9 @@ if(match==true){
 }    
 });                                                                                                                                                                                           
 //reader1.removeEventListener("reading",({message,serialNumber})=>{});
-//if(funStarter==true){
-//beaconVal=beaconAssociation();                                                                          
-//}                                                                                                           
+if(funStarter==true){
+beaconVal=beaconAssociation(tagValue);                                                                          
+}                                                                                                           
 try{                                                                                                                                                                                                            }                                                                                                       catch{                                                                                                                                                                                                          }                                                                                                         }                                                                                                       catch (error) {                                                                                           log("Argh! " + error);                                                                                }                                                                                                     });                                                                                                   //   writeButton.addEventListener("click", async () => {
 //     log("User clicked write button");
 //     try {                                                                                            
