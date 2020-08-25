@@ -58,17 +58,17 @@ try{                                                                            
 //     }
 //   });
 
-async function beaconAssociation(let beacon) {
+async function beaconAssociation(beacon) {
 var beaconKey = ['04:82:3a:2a:ce:66:80','04:a9:34:2a:ce:66:80'];
 var beaconID = ['3EE66B','3EE694'];                                                                     
-let keyRead,row,beacon,addID;                                                                                                                                                    
+let keyRead,row,addID;                                                                                                                                                    
 log('Scanning for localisation beacon');
 if(window.alert("Scan beacon now")){
 await tagValue.onchange();
     return true;
 
 }                                                
-keyRead = String(serialNumber);
+keyRead = beacon;
 row = beaconKey.indexOf(keyRead);                                                                       
 if(row!=-1){
 beacon = beaconID[row];
