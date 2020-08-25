@@ -6,7 +6,7 @@ let badgeValue=null;
 let keyVal;                                                                                           
 var assoc=null;                                                                                   
 let funStarter=null;                                                                                          
-log("Hey now, you're an all star");                                                            
+log("Peanut butter jelly time!");                                                            
 log("User clicked scan button");                                                                        
 try {                                                                                                   
   const reader1 = new NDEFReader();                                                                       
