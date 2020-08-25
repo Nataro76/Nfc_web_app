@@ -1,3 +1,5 @@
+let globTag=this.tagID;
+let globBeacon=this.beaconID;
 class tagAssoc{
     constructor(tag,beacon){
     this.tagID=tag;
@@ -8,7 +10,7 @@ class tagAssoc{
 
 pair() {
     var assoc=null;
-assoc = {BadgeID:String(this.tagID),BeaconID:String(this.beaconID)};
+assoc = {BadgeID:String(globTag),BeaconID:String(globBeacon)};
 if(assoc!==null){
     log(assoc);
 return [assoc.BadgeID,assoc.BeaconID];}
