@@ -6,7 +6,7 @@ let badgeValue=null;
 let keyVal;                                                                                           
 var assoc=null;                                                                                   
 let funStarter=null;                                                                                          
-log("Hit me baby one more time!");                                                            
+log("Ver 2.12");                                                            
 log("User clicked scan button");                                                                        
 try {                                                                                                   
   const reader1 = new NDEFReader();                                                                       
@@ -35,7 +35,8 @@ if(match==true){
   log("We found a matching person for your tag");                                                         
   log(`> Name: ${person}`);
   if(confirm(`${person} Is that you?`)){                                                          
-    assoc = true;                                                                                 
+    assoc = true;  
+    window.alert("You can scan your beacon now");
 }
   else{
    log("This person was ignored . . .");
@@ -63,7 +64,7 @@ var beaconKey = ['04:82:3a:2a:ce:66:80','04:a9:34:2a:ce:66:80'];
 var beaconID = ['3EE66B','3EE694'];                                                                     
 let keyRead,row,addID;                                                                                                                                                    
 log('Scanning for localisation beacon');
-if(window.alert("Scan beacon now")){
+if(window.alert("Scan finished!")){
 await tagValue.onchange();
     return true;
 
