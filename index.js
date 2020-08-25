@@ -64,9 +64,9 @@ var beaconID = ['3EE66B','3EE694'];
 let keyRead,row,beacon,addID;                                                                                                                                                    
 log('Scanning for localisation beacon');
 if(window.alert("Scan beacon now")){
-  if(tagValue.onchange()){
+await tagValue.onchange();
     return true;
-  }
+
 }                                                
 keyRead = String(serialNumber);
 row = beaconKey.indexOf(keyRead);                                                                       
