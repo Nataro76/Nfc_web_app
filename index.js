@@ -8,7 +8,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.18");                                                            
+  log("Ver 2.13");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();                                                                       
@@ -65,6 +65,9 @@ scanButton.addEventListener("click", async () => {
   if(row!=-1){
   beacon = beaconID[row];
   alert(`The beacon ${beacon} and the tag ${person} are correctly associated`)
+  const binding = new tagAssoc(person,beacon);
+  var assocEnd = binding.pair();
+  log(`Association ended: ${assocEnd}`);
   }                                                                                                       
   else{
   log('There is no matching beacon in the list');
@@ -91,8 +94,9 @@ beaconID[key]=tagValue;
 });  
 
 unpairButton.addEventListener("click",async() =>{
+  log.clear();
   log('> User clicked the "unpair" button . . .')
-  //await window.alert("Scan tag then click ok");
-  //window.alert("Now scan beacon and click ok");
+  await window.alert("Scan tag then click ok");
+  window.alert("Now scan beacon and click ok");
   window.alert("Tags and beacons have been unpaired succesfully");
 })
