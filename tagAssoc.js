@@ -15,8 +15,8 @@ if(assoc!==null){
     log(assoc);
 return [assoc.BadgeID,assoc.BeaconID];}
 else{
-    return [this.BeaconID,this.tagID];
-}
+    return `Associated ${this.BeaconID} with ${this.tagID}`;
+
 }
 
 saveAssoc(){
