@@ -6,7 +6,7 @@ let badgeValue=null;
 let keyVal;                                                                                           
 var assoc=null;                                                                                   
 let funStarter=null;                                                                                          
-log("Ver 2.12");                                                            
+log("Ver 2.13");                                                            
 log("User clicked scan button");                                                                        
 try {                                                                                                   
   const reader1 = new NDEFReader();                                                                       
@@ -28,7 +28,7 @@ if(keyVal!=-1){
   match=true;
 }
 else { 
-  beaconAssociation(tagValue);
+  beaconAssociation(tagValue,person);
   match=false;                                                                                          
 }
 if(match==true){                                                                                          
@@ -46,7 +46,7 @@ if(match==true){
 });                                                                                                                                                                                           
 //reader1.removeEventListener("reading",({message,serialNumber})=>{});
 if(funStarter==true){
-beaconVal=beaconAssociation(tagValue);                                                                          
+beaconVal=beaconAssociation(tagValue,person);                                                                          
 }                                                                                                           
 try{                                                                                                                                                                                                            }                                                                                                       catch{                                                                                                                                                                                                          }                                                                                                         }                                                                                                       catch (error) {                                                                                           log("Argh! " + error);                                                                                }                                                                                                     });                                                                                                   //   writeButton.addEventListener("click", async () => {
 //     log("User clicked write button");
@@ -59,7 +59,7 @@ try{                                                                            
 //     }
 //   });
 
-async function beaconAssociation(beacon) {
+async function beaconAssociation(beacon,person) {
 var beaconKey = ['04:82:3a:2a:ce:66:80','04:a9:34:2a:ce:66:80'];
 var beaconID = ['3EE66B','3EE694'];                                                                     
 let keyRead,row,addID;                                                                                                                                                    
@@ -73,7 +73,7 @@ keyRead = beacon;
 row = beaconKey.indexOf(keyRead);                                                                       
 if(row!=-1){
 beacon = beaconID[row];
-alert(`The beacon ${beacon} and the tag are correctly associated`)
+alert(`The beacon ${beacon} and the tag ${person} are correctly associated`)
 }                                                                                                       
 else{
 log('There is no matching beacon in the list');
