@@ -8,7 +8,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.16");                                                            
+  log("Ver 2.13");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();                                                                       
@@ -91,5 +91,8 @@ beaconID[key]=tagValue;
 });  
 
 unpairButton.addEventListener("click",async() =>{
+  log('> User clicked the "unpair" button . . .')
+  await window.alert("Scan tag then click ok");
+  window.alert("Now scan beacon and click ok");
   window.alert("Tags and beacons have been unpaired succesfully");
 })
