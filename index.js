@@ -92,7 +92,7 @@ beaconID[key]=tagValue;
 
 unpairButton.addEventListener("click",async() =>{
   log('> User clicked the "unpair" button . . .')
-  await window.alert("Scan tag then click ok");
-  window.alert("Now scan beacon and click ok");
+  //await window.alert("Scan tag then click ok");
+  //window.alert("Now scan beacon and click ok");
   window.alert("Tags and beacons have been unpaired succesfully");
 })
