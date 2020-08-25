@@ -8,7 +8,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.24");                                                            
+  log("Ver 2.23");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();                                                                       
@@ -64,10 +64,9 @@ scanButton.addEventListener("click", async () => {
   row = beaconKey.indexOf(keyRead);                                                                       
   if(row!=-1){
   beacon = beaconID[row];
-      const binding = new tagAssoc();
+      const binding = new tagAssoc(String(person),String(beacon));
     try{
-  binding.tagID=String(person);
-  binding.beaconID=String(beacon);
+  binding.pair();
     }
     catch(e) {
     log('No assocation was made');
@@ -87,6 +86,12 @@ scanButton.addEventListener("click", async () => {
   }                                                                                                           
   }                                                                                                     
   }                                                                                                                                                                                                   
+
+
+    function newFunction(binding) {
+      binding.tagID = String(person);
+      binding.beaconID = String(beacon);
+    }
   }       
 addButton.addEventListener("click",async() =>{
   let username;
