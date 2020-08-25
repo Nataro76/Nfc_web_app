@@ -6,12 +6,12 @@ class tagAssoc{
 
 
 
-pair(badge,tag) {
+pair() {
     var assoc=null;
-assoc = {BadgeID:String(badge),BeaconID:String(tag)};
-log(assoc);
+assoc = {BadgeID:String(this.tagID),BeaconID:String(this.beaconID)};
 if(assoc!==null){
-return assoc;}
+    log(assoc);
+return [assoc.BadgeID,assoc.BeaconID];}
 else{
     return [this.BeaconID,this.tagID];
 }
