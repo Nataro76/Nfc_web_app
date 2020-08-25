@@ -6,7 +6,7 @@ let badgeValue=null;
 let keyVal;                                                                                           
 var assoc=null;                                                                                   
 let funStarter=null;                                                                                          
-log("Welcome to a new version of this app");                                                            
+log("Hey now, you're an all star");                                                            
 log("User clicked scan button");                                                                        
 try {                                                                                                   
   const reader1 = new NDEFReader();                                                                       
