@@ -81,12 +81,9 @@ scanButton.addEventListener("click", async () => {
   return beaconID[row];                                                                                 
   }                                                                                                                                                                                                                
   }                                                                                                                                                                                                   
-
-
-    function newFunction(binding) {
       binding.tagID = String(person);
       binding.beaconID = String(beacon);
-    }
+
   }       
 addButton.addEventListener("click",async() =>{
   let username;
