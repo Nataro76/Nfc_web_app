@@ -9,7 +9,7 @@ class tagAssoc{
 
 
 pair() {
-    return `Associated ${this.BeaconID} with ${this.tagID}`;
+    return `Associated ${String(this.BeaconID)} with ${this.tagID}`;
 
 }
 
