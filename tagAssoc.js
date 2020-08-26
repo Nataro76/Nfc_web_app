@@ -1,5 +1,5 @@
 let globTag=this.tagID;
-let globBeacon=this.beaconID;
+let globBeacon=String(this.beaconID);
 class tagAssoc{
     constructor(tag,beacon){
     this.tagID=tag;
@@ -9,7 +9,7 @@ class tagAssoc{
 
 
 pair() {
-    return `Associated ${String(this.BeaconID)} with ${this.tagID}`;
+    return `Associated ${globBeacon} with ${globTag}`;
 
 }
 
