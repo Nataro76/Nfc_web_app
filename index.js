@@ -65,7 +65,6 @@ scanButton.addEventListener("click", async () => {
   if(row!=-1){
   beacon = beaconID[row];
       const binding = new tagAssoc(String(person),String(beacon));
-    }
   var assocEnd;
   assocEnd= binding.pair();
   alert(`The beacon ${beacon} and the tag ${person} are correctly associated`)
@@ -73,14 +72,14 @@ scanButton.addEventListener("click", async () => {
   }                                                                                                       
   else{
   log('There is no matching beacon in the list');
+}
   if(confirm('Would you like to add a new beacon?')){                                                       
     beaconKey[beaconKey.length+1]=keyRead;                                                           
      addID=prompt("Type in the ID of the beacon")
   if(addID!=null){
   beaconID[beaconID.length+1]=addID;                                                                      
   return beaconID[row];                                                                                 
-  }                                                                                                           
-  }                                                                                                     
+  }                                                                                                                                                                                                                
   }                                                                                                                                                                                                   
 
 
