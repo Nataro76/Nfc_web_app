@@ -9,6 +9,7 @@ class tagAssoc{
 
 
 pair() {
+    log(globBeacon);
     log(`Associated ${globBeacon} with ${globTag}`);
 
 }
