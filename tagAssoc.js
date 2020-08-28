@@ -1,5 +1,5 @@
 let globTag=this.tag;
-let globBeacon=String(this.beacon);
+let globBeacon=this.beacon;
 class tagAssoc{
     constructor(tag,beacon){
     this.tag=tag;
@@ -12,6 +12,7 @@ pair() {
     //Store the data as an object
     log(globBeacon);
     log(`Associated ${globBeacon} with ${globTag}`);
+    new storage={PersonID:`${this.tag}`,BeaconID:`${this.beacon}`}
 
 }
 
