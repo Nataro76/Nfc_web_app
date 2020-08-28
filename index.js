@@ -8,7 +8,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.33");                                                            
+  log("Ver 2.35");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();                                                                       
@@ -65,6 +65,8 @@ scanButton.addEventListener("click", async () => {
   if(row!=-1){
   beacon = beaconID[row];
       const binding = new tagAssoc(String(person),String(beacon));
+          binding.tagID = String(person);
+      binding.beaconID = String(beacon);
   var assocEnd;
   assocEnd= binding.pair();
   alert(`The beacon ${beacon} and the tag ${person} are correctly associated`)
@@ -81,8 +83,7 @@ scanButton.addEventListener("click", async () => {
   return beaconID[row];                                                                                 
   }                                                                                                                                                                                                                
   }                                                                                                                                                                                                   
-      binding.tagID = String(person);
-      binding.beaconID = String(beacon);
+
 
   }       
 addButton.addEventListener("click",async() =>{
