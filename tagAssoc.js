@@ -9,6 +9,7 @@ class tagAssoc{
 
 
 pair() {
+    //Store the data as an object
     log(globBeacon);
     log(`Associated ${globBeacon} with ${globTag}`);
 
