@@ -1,9 +1,9 @@
-let globTag=this.tagID;
-let globBeacon=String(this.beaconID);
+let globTag=this.tag;
+let globBeacon=String(this.beacon);
 class tagAssoc{
     constructor(tag,beacon){
-    this.tagID=tag;
-    this.beaconID=beacon;
+    this.tag=tag;
+    this.beacon=beacon;
 }
 
 
