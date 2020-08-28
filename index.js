@@ -2,7 +2,9 @@ var tagID= ['27:73:65:a9','04:30:4f:b2:00:53:80','56:72:4d:a5'];
 var personID=['Nathan','Visiteur 096','Giraffe'];
 var beaconKey = ['04:82:3a:2a:ce:66:80','04:a9:34:2a:ce:66:80'];
 var beaconID = ['3EE66B','3EE694'];    
-scanButton.addEventListener("click", async () => {                                                        
+//those variables just store data for now, not really necessary
+scanButton.addEventListener("click", async () => {      
+  //almost everything is displayed in the log() for testing purposes but it has no use and can be erased
   let tagValue=null;                                                                                      
   let badgeValue=null;                                                                                      
   let keyVal;                                                                                           
@@ -89,18 +91,23 @@ scanButton.addEventListener("click", async () => {
 
   }       
 addButton.addEventListener("click",async() =>{
+  //This is just a quick function using the eventlistener on the NDEFreader to add values to the arrays that store the IDs, can
   let username;
   log('> User clicked the "Add" button . . .');
   if(confirm("Do you want to add a new user?")){
 username = prompt("Type in your username here: ");
-let key=personID.length();
+let key;
+    key=personID.length();
 personID[key]=username;
+    window.alert("Now scan your tag and pressok")
+ tagID[key]=tagValue;
 window.alert("Now scan your badge and press ok");
 beaconID[key]=tagValue;
   }
 });  
 
 unpairButton.addEventListener("click",async() =>{
+  //This was just used to erase the association object, right now it does nothing
   log.clear();
   log('> User clicked the "unpair" button . . .')
   await window.alert("Scan tag then click ok");
