@@ -79,7 +79,7 @@ scanButton.addEventListener("click", async () => {
     if(typeof beacon=="string"){
   alert(`The beacon ${beacon} and the tag ${person} are correctly associated`)
   log(`Association ended: ${assocEnd}`);
-          var binding = new tagAssoc(person,beacon);
+          var binding = new tagAssoc(${person},${beacon});
   var assocEnd;
   assocEnd= binding.pair();
     }
