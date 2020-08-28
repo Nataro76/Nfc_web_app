@@ -1,6 +1,5 @@
 class tagAssoc{
     constructor(tag,beacon){
-        super(tag, beacon);
     this.tag=tag;
     this.beacon=beacon;
 }
