@@ -10,7 +10,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.5");                                                            
+  log("Ver 2.52");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();                                                                       
@@ -26,8 +26,15 @@ scanButton.addEventListener("click", async () => {
   log(`> Records: (${message.records.length})`);
    for (const record of message.records) {
     log(`> Record type:   + ${record.recordType}`);
-    log(`> MIME type:     + ${record.mediaType}`);
-    log(`> Record id:     + ${record.id}`);
+     switch(record.recordType){
+        case("text"){
+     function readTextRecord(record) {
+  console.assert(record.recordType === "text");
+  const textDecoder = new TextDecoder(record.encoding);
+  log(`Text: ${textDecoder.decode(record.data)} (${record.lang})`);
+}
+     }
+     }
    }
   //log(`> Data: ${parse}`);
   tagValue=String(serialNumber);
