@@ -10,7 +10,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.52");                                                            
+  log("Ver 2.53");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();                                                                       
@@ -27,13 +27,14 @@ scanButton.addEventListener("click", async () => {
    for (const record of message.records) {
     log(`> Record type:   + ${record.recordType}`);
      switch(record.recordType){
-        case("text"){
+        case("text"):
      function readTextRecord(record) {
   console.assert(record.recordType === "text");
   const textDecoder = new TextDecoder(record.encoding);
   log(`Text: ${textDecoder.decode(record.data)} (${record.lang})`);
+  break;
 }
-     }
+     
      }
    }
   //log(`> Data: ${parse}`);
