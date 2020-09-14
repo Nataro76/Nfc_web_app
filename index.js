@@ -1,10 +1,6 @@
-var tagID= ['27:73:65:a9','04:30:4f:b2:00:53:80','56:72:4d:a5'];
-var personID=['Nathan','Visiteur 096','Giraffe'];
-var beaconKey = ['04:82:3a:2a:ce:66:80','04:a9:34:2a:ce:66:80','5f:46:8b:73:dc:5e:eb'];
-var beaconID = ['3EE66B','3EE694','New high-tech beacon'];    
-//those variables just store data for now, not really necessary
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased
+  var assocTag = new tagAssoc();
   let tagValue=null;                                                                                      
   let badgeValue=null;                                                                                      
   let keyVal;                                                                                           
@@ -21,7 +17,8 @@ scanButton.addEventListener("click", async () => {
     reader1.addEventListener("error", (event) => {
       log(`Argh! ${event.message}`);
     });                                                                                                    
-    funStarter= reader1.addEventListener("reading", ({ message, serialNumber }) => {
+reader1.addEventListener("reading", ({ message, serialNumber }) => {
+      
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
    for (const record of message.records) {
@@ -37,6 +34,7 @@ scanButton.addEventListener("click", async () => {
        break;
        default:
        log('> n/a message');
+//this is all to compute the message
 }
      
      }
@@ -65,12 +63,11 @@ scanButton.addEventListener("click", async () => {
     match=false;                                                                                            
   }
   }    
-  });                                                                                                                                                                                           
-  //reader1.removeEventListener("reading",({message,serialNumber})=>{});
-  if(funStarter==true){
-  beaconVal=beaconAssociation(tagValue,person);                                                                          
-  }                                                                                                           
-  try{                                                                                                                                                                                                            }                                                                                                       catch{                                                                                                                                                                                                          }                                                                                                         }                                                                                                       catch (error) {                                                                                           log("Argh! " + error);                                                                                }                                                                                                     
+  });                                                                                                                                                                                                                                                                                                 
+  }
+  catch (error) {                                                                                           
+    log("Argh! " + error);                                                                                
+  }                                                                                                     
 });                                                                                                   
   async function beaconAssociation(beacon,person) {                                                                 
   let keyRead,row,addID;                                                                                                                                                    
