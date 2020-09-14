@@ -1,9 +1,9 @@
 
 class tagAssoc{
     
-    constructor(tag,beacon){
-    this.tag=tag;
-    this.beacon=beacon;
+    constructor(){
+    this.tag;
+    this.beacon;
     this.storage;
 this.tagID= ['27:73:65:a9','04:30:4f:b2:00:53:80','56:72:4d:a5'];
 this.personID=['Nathan','Visiteur 096','Giraffe'];
@@ -15,9 +15,8 @@ SerialCheck(serial){
 tagValue=String(serial);
 keyVal= this.tagID.indexOf(tagValue);
 let match=false;
-let person,beacon;
 if(keyVal!=-1){
-person = this.personID[keyVal];
+this.tag = this.personID[keyVal];
 }
 else{
     match=false;
@@ -27,8 +26,7 @@ switch(match){
         if(confirm(`${person} is that you?`)){
             if(window.alert('You can scan your beacon and then press okay')){
                 await tagValue.onchange();
-                keyVal= this.tagID.indexOf(tagValue);
-                beacon= this.beaconKey[keyVal];
+                keyVal= this.beaconKey.indexOf(tagValue);
                 return true;
             }
 
@@ -36,8 +34,8 @@ switch(match){
         break;
         
 }
-beacon= this.beaconID[keyVal];
-return [person,beacon];
+this.beacon= this.beaconID[keyVal];
+return [this.person,this.beacon];
 }
 
 pair() {
