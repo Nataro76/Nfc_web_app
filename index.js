@@ -1,23 +1,20 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                         
-  log("Ver 2.64");                                                            
+  log("Ver 2.65");                                                            
   log("User clicked scan button");                                                                        
-  try {                     
-      let tagValue=null;                                                                                      
-  let badgeValue=null;                                                                                      
-  let keyVal;                                                                                           
-  var assoc=null;   
+  try {                                                                                                                                                                                                     
     const reader1 = new NDEFReader();                                                                      
-    let match=false;
-    let tagObj;                                                                                        
+    let match=false;                                                                                        
     let person,beaconVal; 
-      var tagtag = new tagAssoc(); 
     await reader1.scan();                                                                                   
     log("> Scan started");                                                                                  
     reader1.addEventListener("error", (event) => {
       log(`Argh! ${event.message}`);
     });                                                                                                    
-reader1.addEventListener("reading", ({ message, serialNumber }) => {    
+reader1.addEventListener("reading", ({ message, serialNumber }) => {
+    var keyVal,badgeValue,tagValue;
+  let tagObj;
+        var tagtag = new tagAssoc(); 
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
    for (const record of message.records) {
