@@ -17,30 +17,34 @@ keyVal= this.tagID.indexOf(tagValue);
 let match=false;
 if(keyVal!=-1){
 this.tag = this.personID[keyVal];
+match=true;
 }
 else{
+    keyVal= this.beaconKey.indexOf(tagValue);
+    if(keyVal!=-1){
+        this.tag = this.beaconID[keyVal];  
+        match=true;  
+    }
+    else{
     match=false;
+    }
 }
 switch(match){
     case true:
-        if(confirm(`${person} is that you?`)){
-            if(window.alert('You can scan your beacon and then press okay')){
-                await tagValue.onchange();
-                keyVal= this.beaconKey.indexOf(tagValue);
-                return true;
+        if(confirm(`Was the tag ${this.tag} scanned? `)){
+            return this.tag;
             }
-
+            else { 
+            break;
+            }
         }
-        break;
+
         
 }
-this.beacon= this.beaconID[keyVal];
-return [this.person,this.beacon];
-}
 
-pair() {
+
+pairToBeacon(tagData) {
     //Store the data as an object and send the post method
- 
     log(`Associated ${this.tag} with ${this.beacon}`);
     //storage={PersonID:`${this.tag}`,BeaconID:`${this.beacon}`}
     if(checkMatch(this.tag,this.beacon)==true){
