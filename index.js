@@ -5,20 +5,20 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.62");                                                            
+  log("Ver 2.63");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();                                                                      
     let match=false;
     let tagObj;                                                                                        
-    let person,beaconVal;                                                                                     
+    let person,beaconVal; 
+      var tagtag = new tagAssoc(); 
     await reader1.scan();                                                                                   
     log("> Scan started");                                                                                  
     reader1.addEventListener("error", (event) => {
       log(`Argh! ${event.message}`);
     });                                                                                                    
-reader1.addEventListener("reading", ({ message, serialNumber }) => {
-  var tagtag = new tagAssoc();     
+reader1.addEventListener("reading", ({ message, serialNumber }) => {    
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
    for (const record of message.records) {
