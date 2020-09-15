@@ -5,7 +5,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.6");                                                            
+  log("Ver 2.61");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();
@@ -82,7 +82,7 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
 //   let keyRead,row,addID;                                                                                                                                                    
 //   log('Scanning for localisation beacon');
 //   if(window.alert("Scan finished!")){
-//   await tagValue.onchange();
+//   a w a i t  tagValue.onchange();
 //       return true;
   
 //   }                                                
