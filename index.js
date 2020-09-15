@@ -1,6 +1,5 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased
-  var assocTag = new tagAssoc();
   let tagValue=null;                                                                                      
   let badgeValue=null;                                                                                      
   let keyVal;                                                                                           
@@ -9,8 +8,10 @@ scanButton.addEventListener("click", async () => {
   log("Ver 2.56");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
-    const reader1 = new NDEFReader();                                                                       
-    let match=false;                                                                                        
+    const reader1 = new NDEFReader();
+    var assocTag = new tagAssoc();                                                                       
+    let match=false;
+    let tagObj;                                                                                        
     let person,beaconVal;                                                                                     
     await reader1.scan();                                                                                   
     log("> Scan started");                                                                                  
@@ -38,32 +39,32 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
 }
      
      }
-   
+     tagObj= tagAssoc.SerialCheck(serialNumber);
   //log(`> Data: ${parse}`);
-  tagValue=String(serialNumber);
-  log("> Looking for a matching pair in the database");
-  keyVal = tagID.indexOf(tagValue);
-  if(keyVal!=-1){
-    person= personID[tagID.indexOf(tagValue)];
-    match=true;
-  }
-  else { 
-    beaconAssociation(tagValue,person);
-    match=false;                                                                                          
-  }
-  if(match==true){                                                                                          
-    log("We found a matching person for your tag");                                                         
-    log(`> Name: ${person}`);
-    if(confirm(`${person} Is that you?`)){                                                          
-      assoc = true;  
-      window.alert("You can scan your beacon now");
-  }
-    else{
-     log("This person was ignored . . .");
-    match=false;                                                                                            
-  }
-  }    
-  });                                                                                                                                                                                                                                                                                                 
+  // tagValue=String(serialNumber);
+  // log("> Looking for a matching pair in the database");
+  // keyVal = tagID.indexOf(tagValue);
+  // if(keyVal!=-1){
+  //   person= personID[tagID.indexOf(tagValue)];
+  //   match=true;
+  // }
+  // else { 
+  //   beaconAssociation(tagValue,person);
+  //   match=false;                                                                                          
+  // }
+  // if(match==true){                                                                                          
+  //   log("We found a matching person for your tag");                                                         
+  //   log(`> Name: ${person}`);
+  //   if(confirm(`${person} Is that you?`)){                                                          
+  //     assoc = true;  
+  //     window.alert("You can scan your beacon now");
+  // }
+  //   else{
+  //    log("This person was ignored . . .");
+  //   match=false;                                                                                            
+  // }
+  // }    
+   });                                                                                                                                                                                                                                                                                                 
   }
   catch (error) {                                                                                           
     log("Argh! " + error);                                                                                
