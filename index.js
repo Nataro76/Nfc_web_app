@@ -1,13 +1,12 @@
 scanButton.addEventListener("click", async () => {      
-  //almost everything is displayed in the log() for testing purposes but it has no use and can be erased
-  let tagValue=null;                                                                                      
+  //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                         
+  log("Ver 2.64");                                                            
+  log("User clicked scan button");                                                                        
+  try {                     
+      let tagValue=null;                                                                                      
   let badgeValue=null;                                                                                      
   let keyVal;                                                                                           
-  var assoc=null;                                                                                   
-  let funStarter=null;                                                                                          
-  log("Ver 2.63");                                                            
-  log("User clicked scan button");                                                                        
-  try {                                                                                                   
+  var assoc=null;   
     const reader1 = new NDEFReader();                                                                      
     let match=false;
     let tagObj;                                                                                        
