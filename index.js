@@ -5,7 +5,7 @@ scanButton.addEventListener("click", async () => {
   let keyVal;                                                                                           
   var assoc=null;                                                                                   
   let funStarter=null;                                                                                          
-  log("Ver 2.56");                                                            
+  log("Ver 2.6");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
     const reader1 = new NDEFReader();
@@ -39,9 +39,9 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
 }
      
      }
-     tagObj= tagAssoc.SerialCheck(serialNumber);
+     
   //log(`> Data: ${parse}`);
-  // tagValue=String(serialNumber);
+ tagValue=String(serialNumber);
   // log("> Looking for a matching pair in the database");
   // keyVal = tagID.indexOf(tagValue);
   // if(keyVal!=-1){
@@ -64,48 +64,56 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
   //   match=false;                                                                                            
   // }
   // }    
-   });                                                                                                                                                                                                                                                                                                 
+   });  
+   tagObj= tagAssoc.SerialCheck(tagValue); 
+   try {
+     tagAssoc.pairToBeacon(tagObj);
+   }        
+   catch(e){
+     log('Huston we have a problem')
+   }                                                                                                                                                                                                                                                                                      
   }
+
   catch (error) {                                                                                           
     log("Argh! " + error);                                                                                
   }                                                                                                     
 });                                                                                                   
-  async function beaconAssociation(beacon,person) {                                                                 
-  let keyRead,row,addID;                                                                                                                                                    
-  log('Scanning for localisation beacon');
-  if(window.alert("Scan finished!")){
-  await tagValue.onchange();
-      return true;
+//   async function beaconAssociation(beacon,person) {                                                                 
+//   let keyRead,row,addID;                                                                                                                                                    
+//   log('Scanning for localisation beacon');
+//   if(window.alert("Scan finished!")){
+//   await tagValue.onchange();
+//       return true;
   
-  }                                                
-  keyRead = beacon;
-  row = beaconKey.indexOf(keyRead);                                                                       
-  if(row!=-1){
-  beacon = beaconID[row];
-  }                                                                                                       
-  else{
-  log('There is no matching beacon in the list');
-      if(confirm('Would you like to add a new beacon?')){                                                       
-    beaconKey[beaconKey.length+1]=keyRead;                                                           
-     addID=prompt("Type in the ID of the beacon")
-  if(addID!=null){
-  beaconID[beaconID.length+1]=addID;                                                                      
-  return beaconID[row];                                                                                 
-  }                                                                                                                                                                                                                
-  }  
-}
-    if(typeof beacon=="string"){
-                var binding = new tagAssoc(person,beacon);
-  binding.pair();
-  alert(`The beacon ${beacon} and the tag ${person} are correctly associated`)
-  log(`Association ended: ${assocEnd}`);
+//   }                                                
+//   keyRead = beacon;
+//   row = beaconKey.indexOf(keyRead);                                                                       
+//   if(row!=-1){
+//   beacon = beaconID[row];
+//   }                                                                                                       
+//   else{
+//   log('There is no matching beacon in the list');
+//       if(confirm('Would you like to add a new beacon?')){                                                       
+//     beaconKey[beaconKey.length+1]=keyRead;                                                           
+//      addID=prompt("Type in the ID of the beacon")
+//   if(addID!=null){
+//   beaconID[beaconID.length+1]=addID;                                                                      
+//   return beaconID[row];                                                                                 
+//   }                                                                                                                                                                                                                
+//   }  
+// }
+//     if(typeof beacon=="string"){
+//                 var binding = new tagAssoc(person,beacon);
+//   binding.pair();
+//   alert(`The beacon ${beacon} and the tag ${person} are correctly associated`)
+//   log(`Association ended: ${assocEnd}`);
 
-    }
-    else{
-      log('No association was made');
+//     }
+//     else{
+//       log('No association was made');
 
 
-  }       
+//   }       
 addButton.addEventListener("click",async() =>{
   //This is just a quick function using the eventlistener on the NDEFreader to add values to the arrays that store the IDs, can
   let username;
@@ -129,4 +137,4 @@ unpairButton.addEventListener("click",async() =>{
   await window.alert("Scan tag then click ok");
   window.alert("Now scan beacon and click ok");
   window.alert("Tags and beacons have been unpaired succesfully");
-})}
+})
