@@ -8,8 +8,7 @@ scanButton.addEventListener("click", async () => {
   log("Ver 2.61");                                                            
   log("User clicked scan button");                                                                        
   try {                                                                                                   
-    const reader1 = new NDEFReader();
-    var assocTag = new tagAssoc();                                                                       
+    const reader1 = new NDEFReader();                                                                      
     let match=false;
     let tagObj;                                                                                        
     let person,beaconVal;                                                                                     
@@ -19,7 +18,7 @@ scanButton.addEventListener("click", async () => {
       log(`Argh! ${event.message}`);
     });                                                                                                    
 reader1.addEventListener("reading", ({ message, serialNumber }) => {
-      
+  var tagtag = new tagAssoc();     
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
    for (const record of message.records) {
@@ -65,9 +64,9 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
   // }
   // }    
    });  
-   tagObj= tagAssoc.SerialCheck(tagValue); 
+   tagObj= tagtag.SerialCheck(tagValue); 
    try {
-     tagAssoc.pairToBeacon(tagObj);
+     tagtag.pairToBeacon(tagObj);
    }        
    catch(e){
      log('Huston we have a problem')
@@ -114,21 +113,21 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
 
 
 //   }       
-addButton.addEventListener("click",async() =>{
-  //This is just a quick function using the eventlistener on the NDEFreader to add values to the arrays that store the IDs, can
-  let username;
-  log('> User clicked the "Add" button . . .');
-  if(confirm("Do you want to add a new user?")){
-username = prompt("Type in your username here: ");
-let key;
-    key=personID.length();
-personID[key]=username;
-    window.alert("Now scan your tag and pressok")
- tagID[key]=tagValue;
-window.alert("Now scan your badge and press ok");
-beaconID[key]=tagValue;
-  }
-});  
+// addButton.addEventListener("click",async() =>{
+//   //This is just a quick function using the eventlistener on the NDEFreader to add values to the arrays that store the IDs, can
+//   let username;
+//   log('> User clicked the "Add" button . . .');
+//   if(confirm("Do you want to add a new user?")){
+// username = prompt("Type in your username here: ");
+// let key;
+//     key=personID.length();
+// personID[key]=username;
+//     window.alert("Now scan your tag and pressok")
+//  tagID[key]=tagValue;
+// window.alert("Now scan your badge and press ok");
+// beaconID[key]=tagValue;
+//   }
+// });  
 
 unpairButton.addEventListener("click",async() =>{
   //This was just used to erase the association object, right now it does nothing
