@@ -50,7 +50,7 @@ tagAssoc.prototype.pairToBeacon=function(tagData) {
     log(`Associated ${this.tag} with ${this.beacon}`);
     //storage={PersonID:`${this.tag}`,BeaconID:`${this.beacon}`}
     if(checkMatch(this.tag,this.beacon)==true){
-    storage.push(storeObject(this.tag,this.beacon));
+    this.storage.push(storeObject(this.tag,this.beacon));
     }
 
 }
@@ -60,14 +60,14 @@ return {PersonID:tag,BeaconID:beacon};
 }
 
 function checkMatch(person,beacon){
-let personIndex=storage.PersonID.indexOf(person);
-let beaconIndex=storage.BeaconID.indexOf(beacon);
+let personIndex=this.storage.PersonID.indexOf(person);
+let beaconIndex=this.storage.BeaconID.indexOf(beacon);
 if(personIndex!=-1 && beaconIndex==-1){
 delete storage[personIndex];
 return true;
 }
 else if(beaconIndex!=-1 && personIndex==-1){
-delete storage[beaconIndex];
+delete this.storage[beaconIndex];
 return true;
 }
 else if(beaconIndex!=-1 && personIndex!=-1){
