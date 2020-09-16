@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.85/troubleshooting");                                                            
+  log("Ver 2.86/troubleshooting");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -20,9 +20,7 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
   log(`> Records: (${message.records.length})`);
 tagValue=String(serialNumber);
   msgValue=runMsgParse();
-});
-tagValue.addEventListener("change", function(){
-  if(tagValue!='no Tag') {
+    if(tagValue!='no Tag') {
     window.alert('pb1');
  tagObj= myTag.serialCheck(tagValue);
   }
@@ -40,7 +38,10 @@ if(tagObj!=null){
   launchSecondRead();
   beaconObj=myTag.serialCheck(tagValue);   
 }
-})
+});
+
+
+
   }                                                                                                                                                                                                                                                                                     
   
 
