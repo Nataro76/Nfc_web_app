@@ -1,11 +1,11 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.86/troubleshooting");                                                            
+  log("Ver 3.0");                                                            
   log("User clicked scan button");    
 
   try {          
     let tagValue='no Tag';
-    let msgValue;
+    let msgValue,msgType;
     let tagObj=null; 
     let beaconObj=null;                                                                                        
     const reader1 = new NDEFReader();                                                                                                                                                           
@@ -18,27 +18,28 @@ scanButton.addEventListener("click", async () => {
 reader1.addEventListener("reading", ({ message, serialNumber }) => {    
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
-tagValue=String(serialNumber);
   msgValue=runMsgParse();
-    if(tagValue!='no Tag') {
-    window.alert('pb1');
- tagObj= myTag.serialCheck(tagValue);
+  if(msgValue==0){
+    tagValue=String(serialNumber);
+    msgType='Serial';
   }
-  else {
-   if(msgValue){
-     window.alert('pb2');
-    tagObj=myTag.readMessage(msgValue);
-   }
-   else{
-   window.alert('Houston, what the fuck?');
-   }
+  else if(typeof msgValue== 'string'){
+msgType='NodeID';
   }
-
-if(tagObj!=null){
-  launchSecondRead();
-  beaconObj=myTag.serialCheck(tagValue);   
-}
+  switch(msgType){
+    case 'Serial':
+    tagObj=myTag.serialCheck(tagValue);
+    break;
+    case "NodeID":
+    beaconObj =myTag.readMessage(msgValue);
+    break;
+    default:
+    window.alert('No message was read');
+      break;
+    }
 });
+
+
 
 
 
@@ -73,7 +74,7 @@ async function runMsgParse(){
        //nothing yet
        break;
        default:
-       log('> n/a message');
+       return 0;
 //this is all to compute the message
 }
      
