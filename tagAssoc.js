@@ -39,6 +39,8 @@ switch(match){
             else { 
             break;
             }
+            case false:
+                window.alert('Unknown tag');
         }
 
         
@@ -46,11 +48,10 @@ switch(match){
 
 
 tagAssoc.prototype.pairToBeacon=function(tagData) {
-    //Store the data as an object and send the post method
-    log(`Associated ${this.tag} with ${this.beacon}`);
-    //storage={PersonID:`${this.tag}`,BeaconID:`${this.beacon}`}
-    if(checkMatch(this.tag,this.beacon)==true){
+    this.beacon=tagData;
+    if(checkMatch(this.tag,this.beacon)==true){      
     this.storage.push(storeObject(this.tag,this.beacon));
+    window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
     }
 
 }
@@ -63,7 +64,7 @@ function checkMatch(person,beacon){
 let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
 if(personIndex!=-1 && beaconIndex==-1){
-delete storage[personIndex];
+delete this.storage[personIndex];
 return true;
 }
 else if(beaconIndex!=-1 && personIndex==-1){
@@ -74,7 +75,9 @@ else if(beaconIndex!=-1 && personIndex!=-1){
     window.alert("This person is already registered");
     return false;
 }
-
+else {
+    return true;
+}
 }
     tagAssoc.prototype.unpair=function(){
     //This was used to delete the rows of the text file
