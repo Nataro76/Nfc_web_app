@@ -14,20 +14,25 @@ tagAssoc.prototype.readMessage= function(msg){
 }
 
 tagAssoc.prototype.serialCheck=function(serial){
+    window.alert('pb3');
 let tagValue=String(serial);
 let keyVal= this.tagID.indexOf(tagValue);
 let match=false;
 if(keyVal!=-1){
+    window.alert('pb4');
 this.tag = this.personID[keyVal];
 match=true;
 }
 else{
+    window.alert('pb5');
     keyVal= this.beaconKey.indexOf(tagValue);
     if(keyVal!=-1){
+        window.alert('pb6');
         this.tag = this.beaconID[keyVal];  
         match=true;  
     }
     else{
+        window.alert('pb7');
     match=false;
     }
 }
@@ -48,8 +53,10 @@ switch(match){
 
 
 tagAssoc.prototype.pairToBeacon=function(tagData) {
+    window.alert('pb8');
     this.beacon=tagData;
-    if(checkMatch(this.tag,this.beacon)==true){      
+    if(checkMatch(this.tag,this.beacon)==true){ 
+        window.alert('pb9');
     this.storage.push(storeObject(this.tag,this.beacon));
     window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
     }
@@ -57,6 +64,7 @@ tagAssoc.prototype.pairToBeacon=function(tagData) {
 }
 
 tagAssoc.prototype.storeObject=function(tag,beacon) {
+    window.alert('pb10');
 return {PersonID:tag,BeaconID:beacon};
 }
 
