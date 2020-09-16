@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.73");                                                            
+  log("Ver 2.74");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -28,10 +28,10 @@ tagValue=String(serialNumber);
   }
 
 if(tagObj!=null){
-    myTag.pairToBeacon(tagObj);
+  launchSecondRead();
+  beaconObj=myTag.serialCheck(tagValue);   
 }
-launchSecondRead();
-beaconObj=myTag.serialCheck(tagValue);                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                      
   }
 
   catch (error) {                                                                                           
