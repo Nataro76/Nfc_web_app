@@ -1,10 +1,10 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.68");                                                            
+  log("Ver 2.69");                                                            
   log("User clicked scan button");    
 
   try {          
-    let tagValue;                                                                                         
+    let tagValue,tagObj;                                                                                         
     const reader1 = new NDEFReader();                                                                                                                                                           
     await reader1.scan();                                                                                   
     log("> Scan started");                                                                                  
@@ -17,9 +17,10 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
   log(`> Records: (${message.records.length})`);
 runMsgParse();
  tagValue=String(serialNumber);
+ var myTag = new tagAssoc();   
+ tagObj= myTag.serialCheck(tagValue);
    });
-  var myTag = new tagAssoc();   
-  let tagObj= myTag.serialCheck(tagValue);
+
     myTag.pairToBeacon(tagObj);
                                                                                                                                                                                                                                                                                            
   }
