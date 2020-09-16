@@ -1,10 +1,11 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.7");                                                            
+  log("Ver 2.71");                                                            
   log("User clicked scan button");    
 
   try {          
-    let tagValue,tagObj;                                                                                         
+    let tagValue;
+    let tagObj=null;                                                                                         
     const reader1 = new NDEFReader();                                                                                                                                                           
     await reader1.scan();                                                                                   
     log("> Scan started");                                                                                  
@@ -20,9 +21,9 @@ runMsgParse();
    
  tagObj= myTag.serialCheck(tagValue);
    });
-
+if(tagObj!=null){
     myTag.pairToBeacon(tagObj);
-                                                                                                                                                                                                                                                                                           
+}                                                                                                                                                                                                                                                                                         
   }
 
   catch (error) {                                                                                           
