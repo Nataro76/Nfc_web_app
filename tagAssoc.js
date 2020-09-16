@@ -1,7 +1,5 @@
 
 function tagAssoc(){
-    
-
     this.tag;
     this.beacon;
     this.storage;
@@ -12,11 +10,11 @@ this.beaconID = ['3EE66B','3EE694','New high-tech beacon'];
 this.nodeID   
 } 
 
-tagAssoc.readMessage= function(msg){
+tagAssoc.prototype.readMessage= function(msg){
 
 }
 
-tagAssoc.serialCheck=function(serial){
+tagAssoc.prototype.serialCheck=function(serial){
 let tagValue=String(serial);
 let keyVal= this.tagID.indexOf(tagValue);
 let match=false;
@@ -48,7 +46,7 @@ switch(match){
 }
 
 
-tagAssoc.pairToBeacon=function(tagData) {
+tagAssoc.prototype.pairToBeacon=function(tagData) {
     //Store the data as an object and send the post method
     log(`Associated ${this.tag} with ${this.beacon}`);
     //storage={PersonID:`${this.tag}`,BeaconID:`${this.beacon}`}
@@ -58,7 +56,7 @@ tagAssoc.pairToBeacon=function(tagData) {
 
 }
 
-tagAssoc.storeObject=function(tag,beacon) {
+tagAssoc.prototype.storeObject=function(tag,beacon) {
 return {PersonID:tag,BeaconID:beacon};
 }
 
@@ -79,6 +77,6 @@ else if(beaconIndex!=-1 && personIndex!=-1){
 }
 
 }
-    tagAssoc.unpair=function(){
+    tagAssoc.prototype.unpair=function(){
     //This was used to delete the rows of the text file
     }
