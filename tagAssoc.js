@@ -14,49 +14,72 @@ tagAssoc.prototype.readMessage= function(msg){
 }
 
 tagAssoc.prototype.serialCheck=function(serial){
-    window.alert('pb3');
 let tagValue=String(serial);
 let keyVal= this.tagID.indexOf(tagValue);
 let match=false;
+let type=null;
+let check=false;
 if(keyVal!=-1){
-    window.alert('pb4');
 this.tag = this.personID[keyVal];
 match=true;
+type='Tag';
 }
 else{
-    window.alert('pb5');
     keyVal= this.beaconKey.indexOf(tagValue);
     if(keyVal!=-1){
-        window.alert('pb6');
-        this.tag = this.beaconID[keyVal];  
+        this.tag = this.beaconID[keyVal]; 
+        type='Beacon'; 
         match=true;  
     }
     else{
-        window.alert('pb7');
     match=false;
     }
 }
 switch(match){
     case true:
-        if(confirm(`Was the tag ${this.tag} scanned? `)){
-            return this.tag;
+        switch(type){
+            case 'Tag':
+        if(confirm(`Are you ${this.tag} ? `)){
+            check=checkForPerson(this.tag);
             }
-            else { 
-            break;
-            }
+            switch(check){
+                case (typeof check=='string'):
+                    this.unpair(this.tag,beacon);
+                    break;
+                    case 'false':
+                        return this.tag;
+                        default:
+                            break;
+
+            } 
+
+            case 'Beacon':
+            if(confirm(`You scanned the ${this.beacon} beacon`)){
+                check=checkForBeacon(this.beacon);
+                }
+                switch(check){
+                    case (typeof check=='string'):
+                        this.unpair(check,this.beacon);
+                        break;
+                        case 'false':
+                            return this.beacon;
+                        default:
+                    break;
+                }   
+        }
             case false:
                 window.alert('Unknown tag');
+                break;
         }
 
         
 }
 
 
-tagAssoc.prototype.pairToBeacon=function(tagData) {
-    window.alert('pb8');
-    this.beacon=tagData;
-    if(checkMatch(this.tag,this.beacon)==true){ 
-        window.alert('pb9');
+tagAssoc.prototype.pairToBeacon=function(tag,beacon) {
+    this.beacon=beacon;
+    this.tag=tag;
+    if(checkMatch(this.tag,this.beacon)==true){      
     this.storage.push(storeObject(this.tag,this.beacon));
     window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
     }
@@ -64,7 +87,6 @@ tagAssoc.prototype.pairToBeacon=function(tagData) {
 }
 
 tagAssoc.prototype.storeObject=function(tag,beacon) {
-    window.alert('pb10');
 return {PersonID:tag,BeaconID:beacon};
 }
 
@@ -87,6 +109,52 @@ else {
     return true;
 }
 }
-    tagAssoc.prototype.unpair=function(){
-    //This was used to delete the rows of the text file
+
+async function checkForPerson(person){
+let persIndex=this.storage.PersonID.indexOf(person);
+let persBeacon=this.storage.beaconID[persIndex];
+if(persIndex!=-1){
+if(typeof persBeacon!='undefined'){
+window.alert(`This Person is already associated with ${persBeacon}`)
+return persBeacon;
+}
+}
+else {
+delete this.storage.PersonID[persIndex];
+window.alert('Person was in database without association, it has been removed');
+return false;
+}
+}
+
+async function checkForBeacon(beacon){
+    let beacIndex=this.storage.beaconID.indexOf(beacon);
+    let beacPers=this.storage.personID[beacIndex];
+    if(beacIndex!=-1){
+    if(typeof beacPers!='undefined'){
+    window.alert(`This beacon is already associated with ${beacPers}`)
+    return beacPers;
+    }
+    }
+    else {
+    delete this.storage.beaconID[beaconIndex];
+    window.alert('Beacon was in database without association, it has been removed');
+    return false;
+    }    
+}
+
+
+    tagAssoc.prototype.unpair=function(tag,beacon){
+    let verif = checkMatch(tag,beacon);
+    let personIndex=this.storage.PersonID.indexOf(person);
+let beaconIndex=this.storage.BeaconID.indexOf(beacon);
+if(beaconIndex!=personIndex){
+    window.alert('What the fuck?');
+}
+else{
+    switch(verif){
+        case true:
+        delete this.storage[personIndex];
+        windows.alert(`${tag} was unpaired from ${beacon}`);
+    }
+}
     }
