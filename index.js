@@ -25,8 +25,13 @@ tagValue=String(serialNumber);
  tagObj= myTag.serialCheck(tagValue);
   }
   else {
-   window.alert('pb2'); 
+   if(msgValue){
+     window.alert('pb2');
     tagObj=myTag.readMessage(msgValue);
+   }
+   else{
+     break;
+   }
   }
 
 if(tagObj!=null){
