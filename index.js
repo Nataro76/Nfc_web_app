@@ -1,9 +1,10 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.64");                                                            
+  log("Ver 2.65");                                                            
   log("User clicked scan button");    
 
-  try {                                                                                                   
+  try {          
+    let tagValue;                                                                                         
     const reader1 = new NDEFReader();                                                                                                                                                           
     await reader1.scan();                                                                                   
     log("> Scan started");                                                                                  
