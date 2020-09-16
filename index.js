@@ -1,10 +1,10 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.71");                                                            
+  log("Ver 2.7");                                                            
   log("User clicked scan button");    
 
   try {          
-    let tagValue;
+    let tagValue,msgValue;
     let tagObj=null;                                                                                         
     const reader1 = new NDEFReader();                                                                                                                                                           
     await reader1.scan();                                                                                   
@@ -16,10 +16,14 @@ scanButton.addEventListener("click", async () => {
 reader1.addEventListener("reading", ({ message, serialNumber }) => {    
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
-runMsgParse();
+msgValue=runMsgParse();
  tagValue=String(serialNumber);
-   
+  if(myTag.serialCheck(tagValue)) {
  tagObj= myTag.serialCheck(tagValue);
+  }
+  else {
+    tagObj=myTag.readMessage(msgValue);
+  }
    });
 if(tagObj!=null){
     myTag.pairToBeacon(tagObj);
@@ -48,7 +52,7 @@ async function runMsgParse(){
         case "text":
   console.assert(record.recordType === "text");
   const textDecoder = new TextDecoder(record.encoding);
-  log(`Text: ${textDecoder.decode(record.data)} (${record.lang})`);
+  return `Text: ${textDecoder.decode(record.data)} (${record.lang})`;
   break;
        case "url":
        //nothing yet
