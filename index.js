@@ -1,11 +1,12 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.72");                                                            
+  log("Ver 2.73");                                                            
   log("User clicked scan button");    
 
   try {          
     let tagValue,msgValue;
-    let tagObj=null;                                                                                         
+    let tagObj=null; 
+    let beaconObj=null;                                                                                        
     const reader1 = new NDEFReader();                                                                                                                                                           
     await reader1.scan();                                                                                   
     log("> Scan started");                                                                                  
@@ -17,17 +18,20 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
 msgValue=runMsgParse();
- tagValue=String(serialNumber);
+tagValue=String(serialNumber);
+});
   if(myTag.serialCheck(tagValue)) {
  tagObj= myTag.serialCheck(tagValue);
   }
   else {
     tagObj=myTag.readMessage(msgValue);
   }
-   });
+
 if(tagObj!=null){
     myTag.pairToBeacon(tagObj);
-}                                                                                                                                                                                                                                                                                         
+}
+launchSecondRead();
+beaconObj=myTag.serialCheck(tagValue);                                                                                                                                                                                                                                                                                         
   }
 
   catch (error) {                                                                                           
@@ -62,5 +66,9 @@ async function runMsgParse(){
 //this is all to compute the message
 }
      
-     }
+     }    
+}
+
+async function launchSecondRead(){
+  window.alert('You can place your beacon now');
 }
