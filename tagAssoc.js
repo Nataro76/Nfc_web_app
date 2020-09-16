@@ -1,7 +1,7 @@
 
-class tagAssoc{
+function tagAssoc(){
     
-    constructor(){
+
     this.tag;
     this.beacon;
     this.storage;
@@ -12,11 +12,11 @@ this.beaconID = ['3EE66B','3EE694','New high-tech beacon'];
 this.nodeID   
 } 
 
-readMessage(msg){
+tagAssoc.readMessage= function(msg){
 
 }
 
-serialCheck(serial){
+tagAssoc.serialCheck=function(serial){
 let tagValue=String(serial);
 let keyVal= this.tagID.indexOf(tagValue);
 let match=false;
@@ -48,7 +48,7 @@ switch(match){
 }
 
 
-pairToBeacon(tagData) {
+tagAssoc.pairToBeacon=function(tagData) {
     //Store the data as an object and send the post method
     log(`Associated ${this.tag} with ${this.beacon}`);
     //storage={PersonID:`${this.tag}`,BeaconID:`${this.beacon}`}
@@ -58,11 +58,11 @@ pairToBeacon(tagData) {
 
 }
 
-storeObject(tag,beacon) {
+tagAssoc.storeObject=function(tag,beacon) {
 return {PersonID:tag,BeaconID:beacon};
 }
 
-checkMatch(person,beacon){
+function checkMatch(person,beacon){
 let personIndex=storage.PersonID.indexOf(person);
 let beaconIndex=storage.BeaconID.indexOf(beacon);
 if(personIndex!=-1 && beaconIndex==-1){
@@ -79,7 +79,6 @@ else if(beaconIndex!=-1 && personIndex!=-1){
 }
 
 }
-    unpair(){
+    tagAssoc.unpair=function(){
     //This was used to delete the rows of the text file
     }
-}
