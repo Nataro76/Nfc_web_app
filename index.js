@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 2.77");                                                            
+  log("Ver 2.79/troubleshooting");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -21,9 +21,11 @@ tagValue=String(serialNumber);
   msgValue=runMsgParse();
 });
   if(tagValue) {
+    window.alert('pb1');
  tagObj= myTag.serialCheck(tagValue);
   }
   else {
+   window.alert('pb2'); 
     tagObj=myTag.readMessage(msgValue);
   }
 
