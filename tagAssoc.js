@@ -75,7 +75,7 @@ switch(match){
                         break;
 
             } 
-
+            break;
             case 'Beacon':
             if(confirm(`You scanned the ${this.beacon} beacon`)){
                 check=checkForBeacon(this.beacon);
@@ -87,7 +87,8 @@ switch(match){
                         case 'false':
                             storToTemp(this.beacon,'beacon');
                             break;
-                }   
+                }
+                break;   
         }
             case false:
                 window.alert('Unknown tag');
