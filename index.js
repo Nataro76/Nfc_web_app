@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 3.1");                                                            
+  log("Ver 3.2");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -33,9 +33,9 @@ msgType='NodeID';
     case "NodeID":
     beaconObj =myTag.readMessage(msgValue);
     break;
-    default:
-    window.alert('No message was read');
-      break;
+    // default:
+    // window.alert('No message was read');
+    //   break;
     }
  if(confirm('Would you like to pair a second device now?')){
    launchSecondRead();
