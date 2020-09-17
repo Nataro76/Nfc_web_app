@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 3.5");                                                            
+  log("Ver 3.6");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -27,7 +27,7 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
   msgValue= `Text: ${textDecoder.decode(record.data)} (${record.lang})`;
   break;
        default:
-       return 0;
+       msgValue=0;
 //this is all to compute the message
 }
      
