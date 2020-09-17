@@ -67,7 +67,7 @@ switch(match){
             check=checkForPerson(this.tag);
             }
             switch(check){
-                case (typeof check=='string'):
+                default:
                     this.unpair(this.tag,check);
                     break;
                     case 'false':
@@ -81,7 +81,7 @@ switch(match){
                 check=checkForBeacon(this.beacon);
                 }
                 switch(check){
-                    case (typeof check=='string'):
+                    default:
                         this.unpair(check,this.beacon);
                         break;
                         case 'false':
@@ -90,7 +90,7 @@ switch(match){
                 }
                 break;   
         }
-            case false:
+            default:
                 window.alert('Unknown tag');
                 break;
         }
@@ -139,7 +139,7 @@ let persBeacon=this.storage.beaconID[persIndex];
 if(persIndex!=-1){
 if(typeof persBeacon!='undefined'){
 window.alert(`This Person is already associated with ${persBeacon}`)
-return persBeacon;
+return String(persBeacon);
 }
 }
 else {
@@ -155,7 +155,7 @@ async function checkForBeacon(beacon){
     if(beacIndex!=-1){
     if(typeof beacPers!='undefined'){
     window.alert(`This beacon is already associated with ${beacPers}`)
-    return beacPers;
+    return String(beacPers);
     }
     }
     else {
