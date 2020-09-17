@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 3.0");                                                            
+  log("Ver 3.1");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -15,7 +15,7 @@ scanButton.addEventListener("click", async () => {
       log(`Argh! ${event.message}`);
     });                
     var myTag = new tagAssoc();
-reader1.addEventListener("reading", ({ message, serialNumber }) => {    
+reader1.addEventListener("reading", ({ message, serialNumber }) => {  
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
   msgValue=runMsgParse();
@@ -37,6 +37,9 @@ msgType='NodeID';
     window.alert('No message was read');
       break;
     }
+ if(confirm('Would you like to pair a second device now?')){
+   launchSecondRead();
+ }   
 });
 
 
