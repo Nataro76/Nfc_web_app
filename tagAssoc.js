@@ -134,25 +134,26 @@ else {
 }
 
 async function checkForPerson(person){
-try{
-let persIndex=this.storage.PersonID.indexOf(person);
-let persBeacon=this.storage.beaconID[persIndex];
-if(persIndex!=-1){
-if(typeof persBeacon!='undefined'){
-window.alert(`This Person is already associated with ${persBeacon}`)
-return String(persBeacon);
-}
-}
-else {
-delete this.storage.PersonID[persIndex];
-window.alert('Person was in database without association, it has been removed');
-return false;
-}
-}
-catch(error){
-    window.alert('Association database empty, no device has been associated yet');
-    return false;
-    }
+// try{
+// let persIndex=this.storage.PersonID.indexOf(person);
+// let persBeacon=this.storage.beaconID[persIndex];
+// if(persIndex!=-1){
+// if(typeof persBeacon!='undefined'){
+// window.alert(`This Person is already associated with ${persBeacon}`)
+// return String(persBeacon);
+// }
+// }
+// else {
+// delete this.storage.PersonID[persIndex];
+// window.alert('Person was in database without association, it has been removed');
+// return false;
+// }
+// }
+// catch(error){
+//     window.alert('Association database empty, no device has been associated yet');
+//     return false;
+//     }
+window.alert('Surpise motherfucker')
 }
 
 async function checkForBeacon(beacon){
