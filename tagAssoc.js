@@ -153,29 +153,29 @@ async function checkForPerson(person){
 //     window.alert('Association database empty, no device has been associated yet');
 //     return false;
 //     }
-window.alert('Surpise motherfucker')
 }
 
 async function checkForBeacon(beacon){
-    try {
-    let beacIndex=this.storage.beaconID.indexOf(beacon);
-    let beacPers=this.storage.personID[beacIndex];
-    if(beacIndex!=-1){
-    if(typeof beacPers!='undefined'){
-    window.alert(`This beacon is already associated with ${beacPers}`)
-    return String(beacPers);
-    }
-    }
-    else {
-    delete this.storage.beaconID[beaconIndex];
-    window.alert('Beacon was in database without association, it has been removed');
-    return false;
-    }
-}
-catch(error){
-window.alert('Association database empty, no device has been associated yet');
-return false;
-}    
+//     try {
+//     let beacIndex=this.storage.beaconID.indexOf(beacon);
+//     let beacPers=this.storage.personID[beacIndex];
+//     if(beacIndex!=-1){
+//     if(typeof beacPers!='undefined'){
+//     window.alert(`This beacon is already associated with ${beacPers}`)
+//     return String(beacPers);
+//     }
+//     }
+//     else {
+//     delete this.storage.beaconID[beaconIndex];
+//     window.alert('Beacon was in database without association, it has been removed');
+//     return false;
+//     }
+// }
+// catch(error){
+// window.alert('Association database empty, no device has been associated yet');
+// return false;
+// }    
+window.alert('Surpise motherfucker');
 }
 
 
