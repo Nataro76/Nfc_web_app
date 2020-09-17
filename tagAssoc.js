@@ -134,6 +134,7 @@ else {
 }
 
 async function checkForPerson(person){
+try{
 let persIndex=this.storage.PersonID.indexOf(person);
 let persBeacon=this.storage.beaconID[persIndex];
 if(persIndex!=-1){
@@ -147,6 +148,11 @@ delete this.storage.PersonID[persIndex];
 window.alert('Person was in database without association, it has been removed');
 return false;
 }
+}
+catch(error){
+    window.alert('Association database empty');
+    break;
+    }
 }
 
 async function checkForBeacon(beacon){
