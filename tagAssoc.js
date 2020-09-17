@@ -67,8 +67,10 @@ switch(match){
             check=checkForPerson(this.tag);
             }
             switch(check){
-                default:
+                case false:
+                    if(this.tag && check){
                     this.unpair(this.tag,check);
+                    }
                     break;
                     case 'false':
                         storToTemp(this.tag,'tag');
@@ -81,8 +83,10 @@ switch(match){
                 check=checkForBeacon(this.beacon);
                 }
                 switch(check){
-                    default:
+                    case false:
+                        if(this.beacon && check){
                         this.unpair(check,this.beacon);
+                        }
                         break;
                         case 'false':
                             storToTemp(this.beacon,'beacon');
@@ -114,69 +118,69 @@ return {PersonID:tag,BeaconID:beacon};
 }
 
 function checkMatch(person,beacon){
-//     try{
-// let personIndex=this.storage.PersonID.indexOf(person);
-// let beaconIndex=this.storage.BeaconID.indexOf(beacon);
-// if(personIndex!=-1 && beaconIndex==-1){
-// delete this.storage[personIndex];
-// return true;
-// }
-// else if(beaconIndex!=-1 && personIndex==-1){
-// delete this.storage[beaconIndex];
-// return true;
-// }
-// else if(beaconIndex!=-1 && personIndex!=-1){
-//     window.alert("This person is already registered");
-//     return false;
-// }
-//     }
-// catch(error) {
-//     return true;
-// }
+    try{
+let personIndex=this.storage.PersonID.indexOf(person);
+let beaconIndex=this.storage.BeaconID.indexOf(beacon);
+if(personIndex!=-1 && beaconIndex==-1){
+delete this.storage[personIndex];
+return true;
+}
+else if(beaconIndex!=-1 && personIndex==-1){
+delete this.storage[beaconIndex];
+return true;
+}
+else if(beaconIndex!=-1 && personIndex!=-1){
+    window.alert("This person is already registered");
+    return false;
+}
+    }
+catch(error) {
+    return true;
+}
 }
 
 async function checkForPerson(person){
-// try{
-// let persIndex=this.storage.PersonID.indexOf(person);
-// let persBeacon=this.storage.beaconID[persIndex];
-// if(persIndex!=-1){
-// if(typeof persBeacon!='undefined'){
-// window.alert(`This Person is already associated with ${persBeacon}`)
-// return String(persBeacon);
-// }
-// }
-// else {
-// delete this.storage.PersonID[persIndex];
-// window.alert('Person was in database without association, it has been removed');
-// return false;
-// }
-// }
-// catch(error){
-//     window.alert('Association database empty, no device has been associated yet');
-//     return false;
-//     }
+try{
+let persIndex=this.storage.PersonID.indexOf(person);
+let persBeacon=this.storage.beaconID[persIndex];
+if(persIndex!=-1){
+if(typeof persBeacon!='undefined'){
+window.alert(`This Person is already associated with ${persBeacon}`)
+return String(persBeacon);
+}
+}
+else {
+delete this.storage.PersonID[persIndex];
+window.alert('Person was in database without association, it has been removed');
+return false;
+}
+}
+catch(error){
+    window.alert('Association database empty, no device has been associated yet');
+    return false;
+    }
 }
 
 async function checkForBeacon(beacon){
-//     try {
-//     let beacIndex=this.storage.beaconID.indexOf(beacon);
-//     let beacPers=this.storage.personID[beacIndex];
-//     if(beacIndex!=-1){
-//     if(typeof beacPers!='undefined'){
-//     window.alert(`This beacon is already associated with ${beacPers}`)
-//     return String(beacPers);
-//     }
-//     }
-//     else {
-//     delete this.storage.beaconID[beaconIndex];
-//     window.alert('Beacon was in database without association, it has been removed');
-//     return false;
-//     }
-// }
-// catch(error){
-// window.alert('Association database empty, no device has been associated yet');
-// return false;
-// }    
+    try {
+    let beacIndex=this.storage.beaconID.indexOf(beacon);
+    let beacPers=this.storage.personID[beacIndex];
+    if(beacIndex!=-1){
+    if(typeof beacPers!='undefined'){
+    window.alert(`This beacon is already associated with ${beacPers}`)
+    return String(beacPers);
+    }
+    }
+    else {
+    delete this.storage.beaconID[beaconIndex];
+    window.alert('Beacon was in database without association, it has been removed');
+    return false;
+    }
+}
+catch(error){
+window.alert('Association database empty, no device has been associated yet');
+return false;
+}    
 
 }
 
