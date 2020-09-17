@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 3.4");                                                            
+  log("Ver 3.5");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -18,7 +18,20 @@ scanButton.addEventListener("click", async () => {
 reader1.addEventListener("reading", ({ message, serialNumber }) => {  
   log(`> Serial Number: ${serialNumber}`);                                                                
   log(`> Records: (${message.records.length})`);
-  msgValue=runMsgParse();
+  for (const record of message.records) {
+    log(`> Record type:   ${record.recordType}`);
+     switch(record.recordType){
+        case "text":
+  console.assert(record.recordType === "text");
+  const textDecoder = new TextDecoder(record.encoding);
+  msgValue= `Text: ${textDecoder.decode(record.data)} (${record.lang})`;
+  break;
+       default:
+       return 0;
+//this is all to compute the message
+}
+     
+     }
   if(msgValue==0){
     tagValue=String(serialNumber);
     msgType='Serial';
@@ -68,23 +81,7 @@ unpairButton.addEventListener("click",async() =>{
 })
 
 async function runMsgParse(){
-  for (const record of message.records) {
-    log(`> Record type:   ${record.recordType}`);
-     switch(record.recordType){
-        case "text":
-  console.assert(record.recordType === "text");
-  const textDecoder = new TextDecoder(record.encoding);
-  return `Text: ${textDecoder.decode(record.data)} (${record.lang})`;
-  break;
-       case "url":
-       //nothing yet
-       break;
-       default:
-       return 0;
-//this is all to compute the message
-}
-     
-     }    
+    
 }
 
 async function launchSecondRead(){
