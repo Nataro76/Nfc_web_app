@@ -114,6 +114,7 @@ return {PersonID:tag,BeaconID:beacon};
 }
 
 function checkMatch(person,beacon){
+    try{
 let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
 if(personIndex!=-1 && beaconIndex==-1){
@@ -128,7 +129,8 @@ else if(beaconIndex!=-1 && personIndex!=-1){
     window.alert("This person is already registered");
     return false;
 }
-else {
+    }
+catch(error) {
     return true;
 }
 }
