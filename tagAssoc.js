@@ -41,14 +41,14 @@ tagAssoc.prototype.serialCheck=function(serial){
 let tagValue=String(serial);
 let keyVal= this.tagID.indexOf(tagValue);
 let match=false;
-let type=null;
+let type;
 let check=false;
 if(keyVal!=-1){
 this.tag = this.personID[keyVal];
 match=true;
 type='Tag';
 }
-else{
+else {
     keyVal= this.beaconKey.indexOf(tagValue);
     if(keyVal!=-1){
         this.tag = this.beaconID[keyVal]; 
