@@ -150,8 +150,7 @@ return false;
 }
 }
 catch(error){
-    window.alert('Association database empty');
-    break;
+    window.alert('Association database empty, no device has been associated yet');
     }
 }
 
