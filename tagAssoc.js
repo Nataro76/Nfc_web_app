@@ -151,10 +151,12 @@ return false;
 }
 catch(error){
     window.alert('Association database empty, no device has been associated yet');
+    return false;
     }
 }
 
 async function checkForBeacon(beacon){
+    try {
     let beacIndex=this.storage.beaconID.indexOf(beacon);
     let beacPers=this.storage.personID[beacIndex];
     if(beacIndex!=-1){
@@ -167,7 +169,12 @@ async function checkForBeacon(beacon){
     delete this.storage.beaconID[beaconIndex];
     window.alert('Beacon was in database without association, it has been removed');
     return false;
-    }    
+    }
+}
+catch(error){
+window.alert('Association database empty, no device has been associated yet');
+return false;
+}    
 }
 
 
