@@ -7,12 +7,34 @@ this.tagID= ['27:73:65:a9','04:30:4f:b2:00:53:80','56:72:4d:a5'];
 this.personID=['Nathan','Visiteur 096','Giraffe'];
 this.beaconKey = ['04:82:3a:2a:ce:66:80','04:a9:34:2a:ce:66:80','5f:46:8b:73:dc:5e:eb'];
 this.beaconID = ['3EE66B','3EE694','New high-tech beacon']; 
-this.tempStorage;
+this.tempStorage=null;
 } 
 
 tagAssoc.prototype.readMessage= function(msg){
 let message = String(msg);
 let ADDR = message.match(/(\d+)/);
+return ADDR;
+}
+
+async function storToTemp(data,type){
+if(tempStorage!=null){
+    if(tempStorage.type=='beacon'){
+        if(confirm(`Do you want to associate ${tempStorage.data} with ${data} ?`)){
+        pairToBeacon(data,tempStorage.data);
+        tempStorage=null;
+        }
+    }
+    else if(tempStorage.type=='tag'){
+        if(confirm(`Do you want to associate ${tempStorage.data} with ${data} ?`)){
+        pairToBeacon(tempStorage.data,data);
+        tempStorage=null;
+        }
+    }
+}
+else{
+    tempStorage.data=data;
+    tempStorage.type=type;
+}
 }
 
 tagAssoc.prototype.serialCheck=function(serial){
@@ -49,9 +71,8 @@ switch(match){
                     this.unpair(this.tag,check);
                     break;
                     case 'false':
-                        return this.tag;
-                        default:
-                            break;
+                        storToTemp(this.tag,'tag');
+                        break;
 
             } 
 
@@ -64,9 +85,8 @@ switch(match){
                         this.unpair(check,this.beacon);
                         break;
                         case 'false':
-                            return this.beacon;
-                        default:
-                    break;
+                            storToTemp(this.beacon,'beacon');
+                            break;
                 }   
         }
             case false:
