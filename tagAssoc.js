@@ -133,7 +133,6 @@ function checkMatch(person,beacon){
 // catch(error) {
 //     return true;
 // }
-window.alert('Surpise motherfucker');
 }
 
 async function checkForPerson(person){
@@ -183,6 +182,7 @@ async function checkForBeacon(beacon){
 
 
     tagAssoc.prototype.unpair=function(tag,beacon){
+        try{
     let verif = checkMatch(tag,beacon);
     let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
@@ -196,4 +196,8 @@ else{
         windows.alert(`${tag} was unpaired from ${beacon}`);
     }
 }
+        }
+        catch(error){
+            window.alert('Surpise motherfucker');
+        }
     }
