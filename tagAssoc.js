@@ -51,7 +51,7 @@ type='Tag';
 else {
     keyVal= this.beaconKey.indexOf(tagValue);
     if(keyVal!=-1){
-        this.tag = this.beaconID[keyVal]; 
+        this.beacon = this.beaconID[keyVal]; 
         type='Beacon'; 
         match=true;  
     }
@@ -94,9 +94,6 @@ switch(match){
                 }
                 break;   
         }
-            case false:
-                window.alert('Unknown tag');
-                break;
         }
 
         
