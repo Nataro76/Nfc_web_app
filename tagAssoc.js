@@ -82,7 +82,7 @@ switch(match){
         }
 
         
-}
+
 
 
 tagAssoc.prototype.pairToBeacon=function(tag,beacon) {
