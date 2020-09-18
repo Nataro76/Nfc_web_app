@@ -67,12 +67,12 @@ switch(match){
             check=checkForPerson(this.tag);
             }
             switch(check){
-                case false:
+                case (typeof check=='string'):
                     if(this.tag && check){
                     this.unpair(this.tag,check);
                     }
                     break;
-                    case 'false':
+                    case false:
                         storToTemp(this.tag,'tag');
                         break;
 
@@ -83,12 +83,12 @@ switch(match){
                 check=checkForBeacon(this.beacon);
                 }
                 switch(check){
-                    case false:
+                    case (typeof check=='string'):
                         if(this.beacon && check){
                         this.unpair(check,this.beacon);
                         }
                         break;
-                        case 'false':
+                        case false:
                             storToTemp(this.beacon,'beacon');
                             break;
                 }
