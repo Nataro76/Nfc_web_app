@@ -17,26 +17,25 @@ return ADDR;
 }
 
 async function storToTemp(data,type){
-window.alert("Hello, is it me you're looking for ?");
-    // if(tempStorage!=null){
-//     if(tempStorage.type=='beacon'){
-//         if(confirm(`Do you want to associate ${tempStorage.data} with ${data} ?`)){
-//         pairToBeacon(data,tempStorage.data);
-//         tempStorage=null;
-//         }
-//     }
-//     else if(tempStorage.type=='tag'){
-//         if(confirm(`Do you want to associate ${tempStorage.data} with ${data} ?`)){
-//         pairToBeacon(tempStorage.data,data);
-//         tempStorage=null;
-//         }
-//     }
-// }
-// else if(tempStorage==null){
-//     tempStorage.data=data;
-//     tempStorage.type=type;
-// window.alert('Place your second tag and click okay'); 
-// }
+    if(this.tempStorage!=null){
+    if(this.tempStorage.type=='beacon'){
+        if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
+        pairToBeacon(data,this.tempStorage.data);
+        this.tempStorage=null;
+        }
+    }
+    else if(this.tempStorage.type=='tag'){
+        if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
+        pairToBeacon(this.tempStorage.data,data);
+        this.tempStorage=null;
+        }
+    }
+}
+else{
+    this.tempStorage.data=data;
+    this.tempStorage.type=type;
+window.alert('Place your second tag and click "Okay" '); 
+}
 }
 
 tagAssoc.prototype.serialCheck=function(serial){
