@@ -141,7 +141,6 @@ catch(error) {
 }
 
 async function checkForPerson(person){
-    window.alert('Hello there');
     try{
 let persIndex=this.storage.PersonID.indexOf(person);
 let persBeacon=this.storage.beaconID[persIndex];
@@ -163,7 +162,6 @@ catch(error){
 }
 
 async function checkForBeacon(beacon){
-    window.alert('Hello there');
     try {
     let beacIndex=this.storage.beaconID.indexOf(beacon);
     let beacPers=this.storage.personID[beacIndex];
@@ -187,8 +185,8 @@ return false;
 
 
     tagAssoc.prototype.unpair=function(tag,beacon){
+        window.alert('unpairing');
         try{
-            window.alert('unpairing')
     let verif = checkMatch(tag,beacon);
     let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
