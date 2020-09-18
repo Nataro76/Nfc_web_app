@@ -18,23 +18,21 @@ return ADDR;
 
 async function storToTemp(data,type){
 if(tempStorage!=null){
-    window.alert('How you doin?')
     if(tempStorage.type=='beacon'){
-        window.alert(b);
         if(confirm(`Do you want to associate ${tempStorage.data} with ${data} ?`)){
         pairToBeacon(data,tempStorage.data);
         tempStorage=null;
         }
     }
     else if(tempStorage.type=='tag'){
-        window.alert(c);
+        window.alert('How you doin?');
         if(confirm(`Do you want to associate ${tempStorage.data} with ${data} ?`)){
         pairToBeacon(tempStorage.data,data);
         tempStorage=null;
         }
     }
 }
-else{
+else if(tempStorage==null){
     tempStorage.data=data;
     tempStorage.type=type;
 window.alert('Place your second tag and click okay'); 
