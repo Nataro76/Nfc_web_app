@@ -68,24 +68,14 @@ switch(match){
         switch(type){
             case 'Tag':
         if(confirm(`Are you ${this.tag} ? `)){
-            check=checkForPerson(this.tag);
+            checkForPerson(this.tag);
             }
 
             } 
             break;
             case 'Beacon':
             if(confirm(`You scanned the ${this.beacon} beacon`)){
-                check=checkForBeacon(this.beacon);
-                }
-                switch(check){
-                    case (typeof check=='string'):
-                        if(this.beacon && check){
-                        this.unpair(check,this.beacon);
-                        }
-                        break;
-                        case false:
-                            storToTemp(this.beacon,'beacon');
-                            break;
+                    checkForBeacon(this.beacon);
                 }
                 break;   
         }
