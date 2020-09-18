@@ -17,6 +17,7 @@ return ADDR;
 }
 
 async function storToTemp(data,type){
+    window.alert('How you doin?')
 if(tempStorage!=null){
     if(tempStorage.type=='beacon'){
         window.alert(b);
@@ -143,7 +144,6 @@ async function checkForPerson(person){
 try{
 let persIndex=this.storage.PersonID.indexOf(person);
 let persBeacon=this.storage.beaconID[persIndex];
-log('1');
 if(persIndex!=-1){
 if(typeof persBeacon!='undefined'){
 window.alert(`This Person is already associated with ${persBeacon}`)
@@ -157,14 +157,12 @@ return false;
 }
 }
 catch(error){
-    log('2');
     return false;
     }
 }
 
 async function checkForBeacon(beacon){
     try {
-        log('3');
     let beacIndex=this.storage.beaconID.indexOf(beacon);
     let beacPers=this.storage.personID[beacIndex];
     if(beacIndex!=-1){
@@ -180,7 +178,6 @@ async function checkForBeacon(beacon){
     }
 }
 catch(error){
-    log('4');
 return false;
 }    
 
@@ -189,6 +186,7 @@ return false;
 
     tagAssoc.prototype.unpair=function(tag,beacon){
         try{
+            window.alert('unpairing')
     let verif = checkMatch(tag,beacon);
     let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
