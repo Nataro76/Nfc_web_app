@@ -141,7 +141,8 @@ catch(error) {
 }
 
 async function checkForPerson(person){
-try{
+    window.alert('Hello there');
+    try{
 let persIndex=this.storage.PersonID.indexOf(person);
 let persBeacon=this.storage.beaconID[persIndex];
 if(persIndex!=-1){
@@ -162,6 +163,7 @@ catch(error){
 }
 
 async function checkForBeacon(beacon){
+    window.alert('Hello there');
     try {
     let beacIndex=this.storage.beaconID.indexOf(beacon);
     let beacPers=this.storage.personID[beacIndex];
