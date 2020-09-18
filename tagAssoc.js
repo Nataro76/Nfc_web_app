@@ -33,7 +33,7 @@ async function storToTemp(data,type){
     window.alert("I'm Batman");
     this.tempStorage.data=data;
     this.tempStorage.type=type;
-window.alert('Place your second tag and click "Okay" '); 
+window.alert(this.tempStorage); 
 // }
 }
 
