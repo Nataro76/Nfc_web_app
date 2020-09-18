@@ -34,9 +34,7 @@ if(tempStorage!=null){
 else{
     tempStorage.data=data;
     tempStorage.type=type;
-    // if(confirm('Would you like to pair a second device now?')){
-    //     window.alert('Place your tag, then click ok');
-    // } 
+window.alert('Place your second tag and click okay'); 
 }
 }
 
@@ -156,7 +154,6 @@ return false;
 }
 }
 catch(error){
-    window.alert('Association database empty, no device has been associated yet');
     return false;
     }
 }
@@ -178,7 +175,6 @@ async function checkForBeacon(beacon){
     }
 }
 catch(error){
-window.alert('Association database empty, no device has been associated yet');
 return false;
 }    
 
