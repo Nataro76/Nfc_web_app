@@ -94,7 +94,7 @@ switch(match){
                 }
                 break;   
         }
-            default:
+            case false:
                 window.alert('Unknown tag');
                 break;
         }
