@@ -35,7 +35,7 @@ async function storToTemp(data,type){
     window.alert("I'm Batman");
     this.tempStorage.data=String(data);
     this.tempStorage.type=String(type);
-window.alert(JSON.stringify(this.tempStorage));
+window.alert(`${this.tempStorage.data}`);
 // break; 
 // }
 }
