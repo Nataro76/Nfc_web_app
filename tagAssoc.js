@@ -34,9 +34,9 @@ if(tempStorage!=null){
 else{
     tempStorage.data=data;
     tempStorage.type=type;
-    if(confirm('Would you like to pair a second device now?')){
-        window.alert('Place your tag, then click ok');
-    } 
+    // if(confirm('Would you like to pair a second device now?')){
+    //     window.alert('Place your tag, then click ok');
+    // } 
 }
 }
 
