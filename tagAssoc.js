@@ -22,18 +22,21 @@ async function storToTemp(data,type){
         if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
         pairToBeacon(data,this.tempStorage.data);
         this.tempStorage=null;
+        break;
         }
 
     case'tag':
         if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
         pairToBeacon(this.tempStorage.data,data);
         this.tempStorage=null;
+        break;
         }
-default:
+case 'null':
     window.alert("I'm Batman");
     this.tempStorage.data=String(data);
     this.tempStorage.type=String(type);
-window.alert(this.tempStorage); 
+window.alert(this.tempStorage);
+break; 
 }
 }
 
