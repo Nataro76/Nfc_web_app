@@ -17,7 +17,6 @@ return ADDR;
 }
 
 async function storToTemp(data,type){
-    window.alert("I'm Batman");
     switch(this.tempStorage.type){
         case 'beacon':
         if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
@@ -31,6 +30,7 @@ async function storToTemp(data,type){
         this.tempStorage=null;
         }
 default:
+    window.alert("I'm Batman");
     this.tempStorage.data=data;
     this.tempStorage.type=type;
 window.alert('Place your second tag and click "Okay" '); 
