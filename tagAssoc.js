@@ -25,7 +25,6 @@ if(tempStorage!=null){
         }
     }
     else if(tempStorage.type=='tag'){
-        window.alert('How you doin?');
         if(confirm(`Do you want to associate ${tempStorage.data} with ${data} ?`)){
         pairToBeacon(tempStorage.data,data);
         tempStorage=null;
@@ -37,6 +36,7 @@ else if(tempStorage==null){
     tempStorage.type=type;
 window.alert('Place your second tag and click okay'); 
 }
+window.alert('How you doin?');
 }
 
 tagAssoc.prototype.serialCheck=function(serial){
