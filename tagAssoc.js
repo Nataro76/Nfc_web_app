@@ -146,7 +146,7 @@ let persBeacon=this.storage.beaconID[persIndex];
 if(persIndex!=-1){
 if(typeof persBeacon!='undefined'){
 window.alert(`This Person is already associated with ${persBeacon}`)
-return String(persBeacon);
+return persBeacon;
 }
 }
 else {
