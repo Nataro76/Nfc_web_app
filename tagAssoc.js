@@ -70,15 +70,6 @@ switch(match){
         if(confirm(`Are you ${this.tag} ? `)){
             check=checkForPerson(this.tag);
             }
-            switch(check){
-                case (typeof check=='string'):
-                    if(this.tag && check){
-                    this.unpair(this.tag,check);
-                    }
-                    break;
-                    case false:
-                        storToTemp(this.tag,'tag');
-                        break;
 
             } 
             break;
@@ -146,18 +137,19 @@ let persIndex=this.storage.PersonID.indexOf(person);
 let persBeacon=this.storage.beaconID[persIndex];
 if(persIndex!=-1){
 if(typeof persBeacon!='undefined'){
-window.alert(`This Person is already associated with ${persBeacon}`)
-return persBeacon;
+window.alert(`This Person is already associated with ${persBeacon}`);
+this.unpair(person,persBeacon);
 }
 }
 else {
 delete this.storage.PersonID[persIndex];
 window.alert('Person was in database without association, it has been removed');
-return false;
+storToTemp(person,'tag');
 }
 }
 catch(error){
-    return false;
+storToTemp(person,'tag');
+
     }
 }
 
@@ -167,18 +159,18 @@ async function checkForBeacon(beacon){
     let beacPers=this.storage.personID[beacIndex];
     if(beacIndex!=-1){
     if(typeof beacPers!='undefined'){
-    window.alert(`This beacon is already associated with ${beacPers}`)
-    return beacPers;
+    window.alert(`This beacon is already associated with ${beacPers}`);
+    this.unpair(beacPers,beacon);
     }
     }
     else {
     delete this.storage.beaconID[beaconIndex];
     window.alert('Beacon was in database without association, it has been removed');
-    return false;
+    storToTemp(beacon,'beacon');
     }
 }
 catch(error){
-return false;
+    storToTemp(beacon,'beacon');
 }    
 
 }
