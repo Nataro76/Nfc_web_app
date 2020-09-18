@@ -17,8 +17,8 @@ return ADDR;
 }
 
 async function storToTemp(data,type){
-    window.alert('How you doin?')
 if(tempStorage!=null){
+    window.alert('How you doin?')
     if(tempStorage.type=='beacon'){
         window.alert(b);
         if(confirm(`Do you want to associate ${tempStorage.data} with ${data} ?`)){
