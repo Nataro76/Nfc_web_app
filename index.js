@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 3.855/troubleshooting");                                                            
+  log("Ver 3.86/troubleshooting");                                                            
   log("User clicked scan button");    
 
   try {          
