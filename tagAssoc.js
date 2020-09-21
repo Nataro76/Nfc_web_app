@@ -19,23 +19,35 @@ return ADDR;
 async function storToTemp(data,type){
     if(this.tempStorage!=null){
     switch(this.tempStorage.type){
-        case 'beacon':
+        case 'beacon':        
+    if(type!=this.tempStorage.type){   
         if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
         pairToBeacon(data,this.tempStorage.data);
         this.tempStorage=null;
         break;
         }
+        else{
+  
+window.alert(`You scanned a beacon. To associate to ${this.tempStorage.data}, please scan a badge instead`);          
+        }
+    }
 
     case'tag':
+    if(type!=this.tempStorage.type){
         if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
         pairToBeacon(this.tempStorage.data,data);
         this.tempStorage=null;
+        }
+        else{
+            window.alert(`You scanned a badge. To associate to ${this.tempStorage.data}, please scan a beacon instead`);
+        }
         break;
         }
     }
 }
 else {
     try{
+window.alert('To associate a second tag, scan now, then click "ok" ');
     this.tempStorage={data:`${data}`,type:`${type}`};
     }
 catch(error){
