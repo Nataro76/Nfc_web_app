@@ -151,7 +151,6 @@ catch(error) {
 }
 
 async function checkForPerson(person){
-    try{
 let persIndex=this.storage.PersonID.indexOf(person);
 window.alert(persIndex);
 let persBeacon=this.storage.beaconID[persIndex];
@@ -166,15 +165,14 @@ delete this.storage.PersonID[persIndex];
 window.alert('Person was in database without association, it has been removed');
 storToTemp(person,'tag');
 }
-}
-catch(error){
-storToTemp(person,'tag');
+// catch(error){
+// storToTemp(person,'tag');
 
-    }
+//     }
 }
 
 async function checkForBeacon(beacon){
-    try {
+    // try {
     let beacIndex=this.storage.beaconID.indexOf(beacon);
     let beacPers=this.storage.personID[beacIndex];
     if(beacIndex!=-1){
@@ -182,16 +180,16 @@ async function checkForBeacon(beacon){
     window.alert(`This beacon is already associated with ${beacPers}`);
     this.unpair(beacPers,beacon);
     }
-    }
+    // }
     else {
     delete this.storage.beaconID[beaconIndex];
     window.alert('Beacon was in database without association, it has been removed');
     storToTemp(beacon,'beacon');
     }
 }
-catch(error){
-    storToTemp(beacon,'beacon');
-}    
+// catch(error){
+//     storToTemp(beacon,'beacon');
+// }    
 
 }
 
