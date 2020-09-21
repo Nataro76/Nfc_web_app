@@ -105,29 +105,35 @@ switch(match){
 tagAssoc.prototype.pairToBeacon=function(tag,beacon) {
     this.beacon=beacon;
     this.tag=tag;
-    if(checkMatch(this.tag,this.beacon)===true){      
-    this.storage.push(storeObject(this.tag,this.beacon));
+    if(checkMatch(this.tag,this.beacon)===true){   
+        window.alert('shit happens');   
+    storeObject(this.tag,this.beacon);
     window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
     }
     else{
-        window.alert('shit happens');
     }
 
 }
 
 tagAssoc.prototype.storeObject=function(tag,beacon) {
-return {PersonID:tag,BeaconID:beacon};
+    try{
+    this.storage.push({PersonID:`${tag}`,BeaconID:`${beacon}`});
+    window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
+    }
+    catch(error){
+        window.alert(error);
+    }
 }
 
 function checkMatch(person,beacon){
     try{
 let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
-if(personIndex!=-1 && beaconIndex==-1){
+if(personIndex!=-1 && beaconIndex===-1){
 delete this.storage[personIndex];
 return true;
 }
-else if(beaconIndex!=-1 && personIndex==-1){
+else if(beaconIndex!=-1 && personIndex===-1){
 delete this.storage[beaconIndex];
 return true;
 }
@@ -137,6 +143,7 @@ else if(beaconIndex!=-1 && personIndex!=-1){
 }
     }
 catch(error) {
+    window.alert(error);
     return true;
 }
 }
