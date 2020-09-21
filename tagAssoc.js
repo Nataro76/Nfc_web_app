@@ -153,14 +153,10 @@ catch(error) {
 
 async function checkForPerson(person){
     try {
-let persIndex=this.storage.indexOf(person);
-window.alert(persIndex);
-let persBeacon=this.storage.beaconID[persIndex];
-if(persIndex!=-1){
-if(typeof persBeacon!='undefined'){
+const persBeacon = this.storage.some(el => el.PersonID === person);
+if(persBeacon){
 window.alert(`This Person is already associated with ${persBeacon}`);
 this.unpair(person,persBeacon);
-}
 }
 else {
 delete this.storage.PersonID[persIndex];
