@@ -121,6 +121,7 @@ async function pairToBeacon(tag,beacon) {
 async function storeObject(tag,beacon) {
     try{
     this.storage.push({PersonID:`${tag}`,BeaconID:`${beacon}`});
+    window.alert(storage.PersonID + "//"+storage.BeaconID);
     window.alert(`${tag} and ${beacon} have been correctly associated!`);
     }
     catch(error){
