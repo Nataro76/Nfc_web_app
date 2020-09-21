@@ -19,15 +19,17 @@ checkForBeacon(ADDR);
 
 async function storToTemp(data,type){
     if(this.tempStorage!=null){
-    switch(this.tempStorage.type){
+        let oldData=this.tempStorage.data;
+        let oldType=this.tempStorage.type;
+    switch(oldType){
         case 'beacon':        
-    if(type===this.tempStorage.type){  
-        window.alert(`You scanned a beacon. To associate to ${this.tempStorage.data}, please scan a badge instead`);
+    if(type===oldType){  
+        window.alert(`You scanned a beacon. To associate to ${oldData}, please scan a badge instead`);
 break;
     } 
         else{
-            if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
-                pairToBeacon(data,this.tempStorage.data);
+            if(confirm(`Do you want to associate ${oldData} with ${data} ?`)){
+                pairToBeacon(data,oldData);
                 this.tempStorage=null;
                 break;
             }
@@ -35,13 +37,13 @@ break;
         }
 
     case'tag':
-    if(type===this.tempStorage.type){
-        window.alert(`You scanned a badge. To associate to ${this.tempStorage.data}, please scan a beacon instead`);
+    if(type===oldType){
+        window.alert(`You scanned a badge. To associate to ${oldData}, please scan a beacon instead`);
         break;
     }
         else{
-            if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
-                pairToBeacon(this.tempStorage.data,data);
+            if(confirm(`Do you want to associate ${oldData} with ${data} ?`)){
+                pairToBeacon(oldData,data);
                 this.tempStorage=null;
                 break;
                 }
@@ -103,13 +105,12 @@ switch(match){
 
 
 tagAssoc.prototype.pairToBeacon=function(tag,beacon) {
-    if(checkMatch(tag,beacon)===true){   
-        window.alert('shit happens');   
+    window.alert('Hello there');
+    if(checkMatch(tag,beacon)===true){  
     storeObject(this.tag,this.beacon);
     window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
     }
     else{
-        window.alert('Shit has happened');
     }
 
 }
