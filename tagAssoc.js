@@ -30,7 +30,6 @@ break;
         else{
             if(confirm(`Do you want to associate ${oldData} with ${data} ?`)){
                 this.pairToBeacon(data,oldData);
-                window.alert('Hello there');
                 this.tempStorage=null;
                 break;
             }
@@ -106,7 +105,7 @@ switch(match){
 
 
 
-tagAssoc.prototype.pairToBeacon=function(tag,beacon) {
+async function pairToBeacon(tag,beacon) {
     try{
     if(checkMatch(tag,beacon)===true){  
     storeObject(this.tag,this.beacon);
