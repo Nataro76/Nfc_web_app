@@ -154,7 +154,7 @@ async function checkForPerson(person){
     try {
 const persBeacon = this.storage.find(el => el.PersonID === person);
 if(persBeacon){
-window.alert(`This Person is already associated with beacon: ${persBeacon}`);
+window.alert(`This Person is already associated with a beacon`);
 }
 else {
 delete this.storage.PersonID[persIndex];
@@ -172,7 +172,7 @@ async function checkForBeacon(beacon){
     try {
  const beacPers = this.storage.find(el => el.BeaconID === beacon);
     if(beacPers){
-    window.alert(`This beacon is already associated with a person:  ${beacPers}`);
+    window.alert(`This beacon is already associated with a person`);
     }
     else {
     delete this.storage.beaconID[beaconIndex];
