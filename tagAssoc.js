@@ -1,6 +1,6 @@
 this.tag;
 this.beacon;
-this.storage=[];
+this.storage = new String();
 this.nodeID;
 function tagAssoc(){
 this.tagID= ['27:73:65:a9','04:30:4f:b2:00:53:80','56:72:4d:a5'];
@@ -131,7 +131,7 @@ async function storeObject(tag,beacon) {
 
 function checkMatch(person,beacon){
     try{
-        if(typeof this.storage!='undefined'){
+
 let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
 if(beaconIndex!=-1 && personIndex!=-1){
@@ -143,14 +143,9 @@ else {
     delete this.storage[personIndex];
     return true;
 }
-        }
-else{
-    return true;
-}
 
     }
 catch(error) {
-    window.alert(error);
     return true;
 }
 }
