@@ -42,7 +42,7 @@ break;
         break;
     }
         else{
-            if(confirm(`Do you want to associate ${oldData} with ${data} ?`)){
+            if(confirm(`Do you want to associate ${oldData} with ${data} ?`)===true){
                 pairToBeacon(oldData,data);
                 this.tempStorage=null;
                 window.alert('Hello there');
