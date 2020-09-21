@@ -37,7 +37,6 @@ async function storToTemp(data,type){
 else {
     try{
     this.tempStorage={data:`${data}`,type:`${type}`};
-    window.alert('To associate a seconde tag, scan now then click okay');
     }
 catch(error){
 window.alert(error);
@@ -50,7 +49,6 @@ let tagValue=String(serial);
 let keyVal= this.tagID.indexOf(tagValue);
 let match=false;
 let type;
-let check=false;
 if(keyVal!=-1){
 this.tag = this.personID[keyVal];
 match=true;
@@ -61,9 +59,11 @@ else {
     if(keyVal!=-1){
         this.beacon = this.beaconID[keyVal]; 
         type='Beacon'; 
-        match=true;  
+        match=true; 
+        window.alert('Hell yeah'); 
     }
     else{
+        window.alert('Hell no');
     match=false;
     }
 }
