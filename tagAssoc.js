@@ -7,9 +7,7 @@ this.tagID= ['27:73:65:a9','04:30:4f:b2:00:53:80','56:72:4d:a5'];
 this.personID=['Nathan','Visiteur 096','Giraffe'];
 this.beaconKey = ['04:82:3a:2a:ce:66:80','04:a9:34:2a:ce:66:80','5f:46:8b:73:dc:5e:eb'];
 this.beaconID = ['3EE66B','3EE694','New high-tech beacon']; 
-this.tempStorage={};
-this.tempStorage.data='null';
-this.tempStorage.type='null';
+this.tempStorage=null;
 } 
 
 tagAssoc.prototype.readMessage= function(msg){
@@ -19,6 +17,7 @@ return ADDR;
 }
 
 async function storToTemp(data,type){
+    if(this.tempStorage!=null){
     switch(this.tempStorage.type){
         case 'beacon':
         if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
@@ -33,7 +32,9 @@ async function storToTemp(data,type){
         this.tempStorage=null;
         break;
         }
-case 'null':
+    }
+}
+else {
     window.alert("I'm Batman");
     try{
     this.tempStorage={data:`${data}`,type:`${type}`};
@@ -41,8 +42,7 @@ case 'null':
     }
 catch(error){
 window.alert(error);
-}
-break; 
+} 
 }
 }
 
