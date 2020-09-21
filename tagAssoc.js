@@ -13,38 +13,41 @@ this.tempStorage=null;
 tagAssoc.prototype.readMessage= function(msg){
 let message = String(msg);
 let ADDR = message.match(/(\d+)/);
-return ADDR;
+window.alert(ADDR);
+checkForBeacon(ADDR);
 }
 
 async function storToTemp(data,type){
     if(this.tempStorage!=null){
     switch(this.tempStorage.type){
         case 'beacon':        
-    if(type!=this.tempStorage.type){   
-        if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
-        pairToBeacon(data,this.tempStorage.data);
-        this.tempStorage=null;
-        break;
-        }
+    if(type===this.tempStorage.type){  
+        window.alert(`You scanned a beacon. To associate to ${this.tempStorage.data}, please scan a badge instead`);
+break;
+    } 
         else{
-  
-window.alert(`You scanned a beacon. To associate to ${this.tempStorage.data}, please scan a badge instead`);          
+            if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
+                pairToBeacon(data,this.tempStorage.data);
+                this.tempStorage=null;
+                break;
+            }
+          
         }
-    }
 
     case'tag':
-    if(type!=this.tempStorage.type){
-        if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
-        pairToBeacon(this.tempStorage.data,data);
-        this.tempStorage=null;
-        }
-        else{
-            window.alert(`You scanned a badge. To associate to ${this.tempStorage.data}, please scan a beacon instead`);
-        }
+    if(type===this.tempStorage.type){
+        window.alert(`You scanned a badge. To associate to ${this.tempStorage.data}, please scan a beacon instead`);
         break;
+    }
+        else{
+            if(confirm(`Do you want to associate ${this.tempStorage.data} with ${data} ?`)){
+                pairToBeacon(this.tempStorage.data,data);
+                this.tempStorage=null;
+                break;
+                }
+        }
         }
     }
-}
 else {
     try{
 window.alert('To associate a second tag, scan now, then click "ok" ');
@@ -72,10 +75,8 @@ else {
         this.beacon = this.beaconID[keyVal]; 
         type='Beacon'; 
         match=true; 
-        window.alert('Hell yeah'); 
     }
     else{
-        window.alert('Hell no');
     match=false;
     }
 }
@@ -189,7 +190,7 @@ catch(error){
     let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
 if(beaconIndex!=personIndex){
-    window.alert('What the fuck?');
+    window.alert("Indexes do not match, error");
 }
 else{
     switch(verif){
@@ -200,6 +201,6 @@ else{
 }
         }
         catch(error){
-            window.alert('Surpise motherfucker');
+            window.alert(error);
         }
     }
