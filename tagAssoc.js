@@ -155,7 +155,7 @@ async function checkForPerson(person){
     try {
 const persBeacon = this.storage.some(el => el.PersonID === person);
 if(persBeacon){
-window.alert(`This Person is already associated with ${persBeacon}`);
+window.alert(`This Person is already associated with a beacon`);
 this.unpair(person,persBeacon);
 }
 else {
@@ -172,11 +172,9 @@ storToTemp(person,'tag');
 
 async function checkForBeacon(beacon){
     try {
-    let beacIndex=this.storage.indexOf(beacon);
-    let beacPers=this.storage.personID[beacIndex];
-    if(beacIndex!=-1){
-    if(typeof beacPers!='undefined'){
-    window.alert(`This beacon is already associated with ${beacPers}`);
+ const beacPers = this.storage.find(el => el.PersonID === person);
+    if(beacPers){
+    window.alert(`This beacon is already associated with a person ${beacPers}`);
     this.unpair(beacPers,beacon);
     }
     else {
@@ -184,7 +182,6 @@ async function checkForBeacon(beacon){
     window.alert('Beacon was in database without association, it has been removed');
     storToTemp(beacon,'beacon');
     }
-}
 }
 catch(error){
     storToTemp(beacon,'beacon');
