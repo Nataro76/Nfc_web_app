@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.6");                                                            
+  log("Ver 4.61");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -51,14 +51,15 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
 unpairButton.addEventListener("click",async() =>{
   //This was just used to erase the association object, right now it does nothing
   log.clear();
-  log('> User clicked the "unpair" button . . .')
-  await window.alert("Scan tag then click ok");
-  window.alert("Now scan beacon and click ok");
-  window.alert("Tags and beacons have been unpaired succesfully");
+  const reader1 = new NDEFReader();                                                                                                                                                           
+    await reader1.scan();    
+    log('> Scan tag you want to unpair');
+    // reader1.addEventListener("error", (event) => {
+    //   log(`Argh! ${event.message}`);
+    // }); 
+
+
 })
 
-async function runMsgParse(){
-    
-}
 
 
