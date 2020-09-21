@@ -71,7 +71,6 @@ type='Tag';
 }
 else {
     keyVal= this.beaconKey.indexOf(tagValue);
-    window.alert(keyVal);
     if(keyVal!=-1){
         this.beacon = this.beaconID[keyVal]; 
         type='Beacon'; 
@@ -106,9 +105,12 @@ switch(match){
 tagAssoc.prototype.pairToBeacon=function(tag,beacon) {
     this.beacon=beacon;
     this.tag=tag;
-    if(checkMatch(this.tag,this.beacon)==true){      
+    if(checkMatch(this.tag,this.beacon)===true){      
     this.storage.push(storeObject(this.tag,this.beacon));
     window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
+    }
+    else{
+        window.alert('shit happens');
     }
 
 }
