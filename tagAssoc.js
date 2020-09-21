@@ -121,7 +121,6 @@ async function pairToBeacon(tag,beacon) {
 async function storeObject(tag,beacon) {
     try{
     this.storage.push({PersonID:`${tag}`,BeaconID:`${beacon}`});
-    window.alert(String(storage[0]));
     window.alert(`${tag} and ${beacon} have been correctly associated!`);
     this.tempStorage=null;
     }
@@ -155,8 +154,7 @@ async function checkForPerson(person){
     try {
 const persBeacon = this.storage.find(el => el.PersonID === person);
 if(persBeacon){
-window.alert(`This Person is already associated with a beacon`);
-this.unpair(person,persBeacon);
+window.alert(`This Person is already associated with beacon: ${persBeacon}`);
 }
 else {
 delete this.storage.PersonID[persIndex];
@@ -174,8 +172,7 @@ async function checkForBeacon(beacon){
     try {
  const beacPers = this.storage.find(el => el.BeaconID === beacon);
     if(beacPers){
-    window.alert(`This beacon is already associated with a person ${beacPers}`);
-    this.unpair(beacPers,beacon);
+    window.alert(`This beacon is already associated with a person:  ${beacPers}`);
     }
     else {
     delete this.storage.beaconID[beaconIndex];
