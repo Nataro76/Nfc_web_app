@@ -153,7 +153,7 @@ catch(error) {
 
 async function checkForPerson(person){
     try {
-const persBeacon = this.storage.some(el => el.PersonID === person);
+const persBeacon = this.storage.find(el => el.PersonID === person);
 if(persBeacon){
 window.alert(`This Person is already associated with a beacon`);
 this.unpair(person,persBeacon);
@@ -172,7 +172,7 @@ storToTemp(person,'tag');
 
 async function checkForBeacon(beacon){
     try {
- const beacPers = this.storage.find(el => el.PersonID === person);
+ const beacPers = this.storage.find(el => el.BeaconID === person);
     if(beacPers){
     window.alert(`This beacon is already associated with a person ${beacPers}`);
     this.unpair(beacPers,beacon);
