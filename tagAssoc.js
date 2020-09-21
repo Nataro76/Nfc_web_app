@@ -1,6 +1,6 @@
 this.tag;
 this.beacon;
-this.storage;
+this.storage=[];
 this.nodeID;
 function tagAssoc(){
 this.tagID= ['27:73:65:a9','04:30:4f:b2:00:53:80','56:72:4d:a5'];
