@@ -126,6 +126,7 @@ async function storeObject(tag,beacon) {
     catch(error){
         window.alert(error);
     }
+    this.tempStorage=null;
 }
 
 function checkMatch(person,beacon){
@@ -152,6 +153,7 @@ catch(error) {
 async function checkForPerson(person){
     try{
 let persIndex=this.storage.PersonID.indexOf(person);
+window.alert(persIndex);
 let persBeacon=this.storage.beaconID[persIndex];
 if(persIndex!=-1){
 if(typeof persBeacon!='undefined'){
