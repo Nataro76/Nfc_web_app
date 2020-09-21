@@ -103,14 +103,13 @@ switch(match){
 
 
 tagAssoc.prototype.pairToBeacon=function(tag,beacon) {
-    this.beacon=beacon;
-    this.tag=tag;
-    if(checkMatch(this.tag,this.beacon)===true){   
+    if(checkMatch(tag,beacon)===true){   
         window.alert('shit happens');   
     storeObject(this.tag,this.beacon);
     window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
     }
     else{
+        window.alert('Shit has happened');
     }
 
 }
@@ -129,17 +128,14 @@ function checkMatch(person,beacon){
     try{
 let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
-if(personIndex!=-1 && beaconIndex===-1){
-delete this.storage[personIndex];
-return true;
-}
-else if(beaconIndex!=-1 && personIndex===-1){
-delete this.storage[beaconIndex];
-return true;
-}
-else if(beaconIndex!=-1 && personIndex!=-1){
+if(beaconIndex!=-1 && personIndex!=-1){
     window.alert("This person is already registered");
     return false;
+}
+else {
+    delete this.storage[beaconIndex];
+    delete this.storage[personIndex];
+    return true;
 }
     }
 catch(error) {
