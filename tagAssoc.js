@@ -35,10 +35,9 @@ async function storToTemp(data,type){
     }
 }
 else {
-    window.alert("I'm Batman");
     try{
     this.tempStorage={data:`${data}`,type:`${type}`};
-    window.alert('data: ' + this.tempStorage.data + ' type:' + this.tempStorage.type);
+    window.alert('To associate a seconde tag, scan now then click okay');
     }
 catch(error){
 window.alert(error);
