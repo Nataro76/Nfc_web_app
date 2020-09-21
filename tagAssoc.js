@@ -151,10 +151,10 @@ catch(error) {
 }
 
 async function checkForPerson(person){
-let persIndex=this.storage.PersonID.indexOf(person);
+    try {
+let persIndex=this.storage.indexOf(person);
 window.alert(persIndex);
 let persBeacon=this.storage.beaconID[persIndex];
-try {
 if(persIndex!=-1){
 if(typeof persBeacon!='undefined'){
 window.alert(`This Person is already associated with ${persBeacon}`);
@@ -174,9 +174,9 @@ storToTemp(person,'tag');
 }
 
 async function checkForBeacon(beacon){
-    let beacIndex=this.storage.beaconID.indexOf(beacon);
-    let beacPers=this.storage.personID[beacIndex];
     try {
+    let beacIndex=this.storage.indexOf(beacon);
+    let beacPers=this.storage.personID[beacIndex];
     if(beacIndex!=-1){
     if(typeof beacPers!='undefined'){
     window.alert(`This beacon is already associated with ${beacPers}`);
