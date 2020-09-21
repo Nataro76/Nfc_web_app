@@ -87,8 +87,6 @@ switch(match){
             case 'Tag':
         if(confirm(`Are you ${this.tag} ? `)){
             checkForPerson(this.tag);
-            }
-
             } 
             break;
             case 'Beacon':
@@ -97,7 +95,9 @@ switch(match){
                 }
                 break;   
         }
-        }
+        
+}
+}
 
         
 
