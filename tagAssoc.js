@@ -131,6 +131,7 @@ tagAssoc.prototype.storeObject=function(tag,beacon) {
 
 function checkMatch(person,beacon){
     try{
+        if(typeof this.storage!='undefined'){
 let personIndex=this.storage.PersonID.indexOf(person);
 let beaconIndex=this.storage.BeaconID.indexOf(beacon);
 if(beaconIndex!=-1 && personIndex!=-1){
@@ -142,6 +143,11 @@ else {
     delete this.storage[personIndex];
     return true;
 }
+        }
+else{
+    return true;
+}
+
     }
 catch(error) {
     window.alert(error);
