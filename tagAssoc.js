@@ -71,6 +71,7 @@ type='Tag';
 }
 else {
     keyVal= this.beaconKey.indexOf(tagValue);
+    window.alert(keyVal);
     if(keyVal!=-1){
         this.beacon = this.beaconID[keyVal]; 
         type='Beacon'; 
