@@ -36,8 +36,7 @@ async function storToTemp(data,type){
 // case 'null':
     window.alert("I'm Batman");
     try{
-    this.tempStorage.data=String(data);
-    this.tempStorage.type=String(type);
+    this.tempStorage={data:`${data}`,type:`${type}`};
     window.alert(tempStorage.data);
     }
 catch(error){
