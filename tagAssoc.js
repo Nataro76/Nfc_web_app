@@ -109,7 +109,6 @@ async function pairToBeacon(tag,beacon) {
     try{
     if(checkMatch(tag,beacon)===true){  
     storeObject(tag,beacon);
-    window.alert(`${tag} and ${beacon} have been correctly associated!`);
     }
     else{
     }
@@ -122,7 +121,7 @@ async function pairToBeacon(tag,beacon) {
 async function storeObject(tag,beacon) {
     try{
     this.storage.push({PersonID:`${tag}`,BeaconID:`${beacon}`});
-    window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
+    window.alert(`${tag} and ${beacon} have been correctly associated!`);
     }
     catch(error){
         window.alert(error);
