@@ -45,8 +45,9 @@ break;
             if(confirm(`Do you want to associate ${oldData} with ${data} ?`)){
                 pairToBeacon(oldData,data);
                 this.tempStorage=null;
-                break;
+                window.alert('Hello there');
                 }
+                break;
         }
         }
     }
@@ -105,7 +106,6 @@ switch(match){
 
 
 tagAssoc.prototype.pairToBeacon=function(tag,beacon) {
-    window.alert('Hello there');
     if(checkMatch(tag,beacon)===true){  
     storeObject(this.tag,this.beacon);
     window.alert(`${this.tag} and ${this.beacon} have been correctly associated!`);
