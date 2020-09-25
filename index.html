@@ -13,13 +13,31 @@
     <link rel="stylesheet" href="../styles/main.css">   
   </head>
   <body>
-<button id="scanButton"class ='styleButton' href='#'>Pair</button>
-<button id="unpairButton"class ='styleButton' href='#'>Unpair</button>
-<button id="addButton"class ='styleButton' href='#'>Add</button>
+    <div class='container'>
+      <div class='center'>
+      <button id="scanButton"class ='styleButton' href='#'>Pair</button>
+      <button id="unpairButton"class ='styleButton' href='#'>Unpair</button>
+      <button id="addButton"class ='styleButton' href='#'>Add</button>
+    </div>
+  </div>
+
 <script type="text/javascript" src="chrome_sample_init.js"></script>
 <h3>Live log Output</h3>
     <style>
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
 
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 .styleButton {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
