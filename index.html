@@ -13,9 +13,34 @@
     <link rel="stylesheet" href="../styles/main.css">   
   </head>
   <body>
-<button id="scanButton">Pair</button>
+<!-- <button id="scanButton">Pair</button> -->
 <button id="unpairButton">Unpair</button>
 <button id="addButton">Add</button>
+<a href="#" class="scanButton">Pair</a>
+.scanButton {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.scanButton:hover {
+	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	background-color:#f6f6f6;
+}
+.scanButton:active {
+	position:relative;
+	top:1px;
+}
 <script type="text/javascript" src="chrome_sample_init.js"></script>
 <h3>Live log Output</h3>
 <div id="output" class="output">
@@ -23,7 +48,6 @@
   <div id="status"></div>
   <pre id="log"></pre>
 </div>
-<script type="text/javascript" src="tagAssoc.js"></script>
 <script type="text/javascript" src="chrome_ver_check.js"></script>
 <script type="text/javascript" src="ndef_check.js"></script>
 <script type="text/javascript" src="index.js"></script>
