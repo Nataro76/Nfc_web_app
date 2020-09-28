@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.78/testing");                                                            
+  log("Ver 4.79");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -16,7 +16,7 @@ scanButton.addEventListener("click", async () => {
       log(`Argh! ${event.message}`);
     });                
     var myTag = new tagAssoc();
-    reader1.onreading = event => {  
+    reader1.onreading = ({message,serialNumber}) => {  
       log(`> Serial Number: ${serialNumber}`);                                                                
       log(`> Records: (${message.records.length})`);
       for (const record of message.records) {
