@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.73");                                                            
+  log("Ver 4.74");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -41,24 +41,21 @@ scanButton.addEventListener("click", async () => {
       }
     };
 reader1.addEventListener("reading", listener,true);
-stopIt.addEventListener('blue',function(){
-reader1.removeEventListener("reading",listener,true);
-})
   }                                                                                                                                                                                                                                                                                     
 
   catch (error) {                                                                                           
     log("Argh! " + error);                                                                                
-  }
-  unpairButton.addEventListener("click",async() =>{
-    var tagUnpair=new tagAssoc();
-    tagUnpair.unpairFromTag(tagValue);
-    
-    
-    })                                                                                                     
+  } 
+  reader1.removeEventListener("reading",listener,true);                                                                                                   
 });                                                                                                   
 
 
-
+unpairButton.addEventListener("click",async() =>{
+  var tagUnpair=new tagAssoc();
+  tagUnpair.unpairFromTag(tagValue);
+  
+  
+  }) 
 
 
 
