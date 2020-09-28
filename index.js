@@ -1,3 +1,10 @@
+var elementCheck = function stopIt(test){
+  if(test){
+  var test = new Event('blue');
+  delete test;
+  }
+}
+
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
   log("Ver 4.73");                                                            
@@ -41,9 +48,11 @@ scanButton.addEventListener("click", async () => {
       }
     };
 reader1.addEventListener("reading", listener,true);
-
+stopIt.addEventListener('blue',function(){
+reader1.removeEventListener("reading",listener,true);
+})
   }                                                                                                                                                                                                                                                                                     
-  
+
   catch (error) {                                                                                           
     log("Argh! " + error);                                                                                
   }                                                                                                     
@@ -52,7 +61,7 @@ reader1.addEventListener("reading", listener,true);
 
 unpairButton.addEventListener("click",async() =>{
   try{
-    reader1.removeEventListener("reading", listener,true);
+stopIt('now');
   }
   catch(error){
     window.alert(error);
