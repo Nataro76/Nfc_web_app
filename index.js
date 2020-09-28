@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.67");                                                            
+  log("Ver 4.68");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -52,7 +52,7 @@ unpairButton.addEventListener("click",async() =>{
   //This was just used to erase the association object, right now it does nothing
 clear();
 log('> User clicked the "unpair" button');
-reader1.removeEventListener("reading");
+reader1.removeEventListener("reading", ({ message, serialNumber }));
 var readerUnpair = new NDEFReader();
 var tagUnpair = new tagAssoc();
 readerUnpair.addEventListener("reading",({message,serialNumber})=>{
