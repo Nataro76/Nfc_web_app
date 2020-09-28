@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.82");                                                            
+  log("Ver 4.83");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -42,11 +42,11 @@ scanButton.addEventListener("click", async () => {
       }
     };
 controller.signal.onabort = event => {
-  window.alert("We're done waiting for NDEF messages.");
+  window.alert('You waited for too long, please click "pair" again');
 };
 
 // Stop listening to NDEF messages after 45s.
-setTimeout(() => controller.abort(), 45_000);   
+setTimeout(() => controller.abort(), 20_000);   
   }                                                                                                                                                                                                                                                                                     
 
   catch (error) {                                                                                           
