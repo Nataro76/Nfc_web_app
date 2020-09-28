@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.75");                                                            
+  log("Ver 4.76");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -46,7 +46,7 @@ reader1.addEventListener("reading", listener,true);
   catch (error) {                                                                                           
     log("Argh! " + error);                                                                                
   } 
-  reader1.removeEventListener("reading",listener,true);                                                                                                   
+  await reader1.removeEventListener("reading",listener,true);                                                                                                   
 });                                                                                                   
 
 
