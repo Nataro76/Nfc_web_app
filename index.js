@@ -53,10 +53,11 @@ unpairButton.addEventListener("click",async() =>{
 clear();
           log('>Version 2');
 log('> User clicked the "unpair" button');
-reader1.removeEventListener("reading", ({ message, serialNumber }));
+// reader1.removeEventListener("reading", ({ message, serialNumber }));
 var readerUnpair = new NDEFReader();
 var tagUnpair = new tagAssoc();
 await readerUnpair.scan();
+log('> Scan started')
 readerUnpair.addEventListener("reading",({message,serialNumber})=>{
   tagValue=String(serialNumber);
 if(confirm(`Have you scanned ${tagValue} ?`)){
