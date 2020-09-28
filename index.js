@@ -51,7 +51,7 @@
 unpairButton.addEventListener("click",async() =>{
   //This was just used to erase the association object, right now it does nothing
 clear();
-          log(>Version 2);
+          log('>Version 2');
 log('> User clicked the "unpair" button');
 reader1.removeEventListener("reading", ({ message, serialNumber }));
 var readerUnpair = new NDEFReader();
