@@ -18,6 +18,12 @@
       <button id="scanButton"class ='styleButton' href='#'>Pair</button>
       <button id="unpairButton"class ='styleButton' href='#'>Unpair</button>
       <button id="addButton"class ='styleButton' href='#'>Add</button>
+	              <h3>Console:</h3>
+<div id="output" class="output">
+  <div id="content"></div>
+  <div id="status"></div>
+  <pre id="log"></pre>
+</div>
     </div>
   </div>
 
@@ -37,6 +43,14 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+	    .output {
+  background-color: #f0f0f0;
+  border-radius: 0.75em;
+  display: block;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
 .styleButton {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
@@ -59,14 +73,6 @@
 }
 
         </style>
-        <div class='container'>
-        <h3>Console:</h3>
-<div id="output" class="output">
-  <div id="content"></div>
-  <div id="status"></div>
-  <pre id="log"></pre>
-</div>
-</div>
 <script type="text/javascript" src="chrome_ver_check.js"></script>
 <script type="text/javascript" src="ndef_check.js"></script>
 <script type="text/javascript" src="index.js"></script>
