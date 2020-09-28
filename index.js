@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.61");                                                            
+  log("Ver 4.73");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -48,47 +48,25 @@ reader1.removeEventListener("reading",listener,true);
 
   catch (error) {                                                                                           
     log("Argh! " + error);                                                                                
-  }                                                                                                     
+  }
+  unpairButton.addEventListener("click",async() =>{
+    var tagUnpair=new tagAssoc();
+    tagUnpair.unpairFromTag(tagValue);
+    
+    
+    })                                                                                                     
 });                                                                                                   
 
 
-unpairButton.addEventListener("click",async() =>{
-  try{
-    var elementCheck = function stopIt(test){
-      if(test){
-      var test = new Event('blue');
-      delete test;
-      }
-    }
-    
-stopIt('now');
-  }
-  catch(error){
-    window.alert(error);
-  }
-  //This was just used to erase the association object, right now it does nothing
-clear();
-          log('>Version 2');
-log('> User clicked the "unpair" button');
-var readerUnpair = new NDEFReader();
-var tagUnpair = new tagAssoc();
-await readerUnpair.scan();
-log('> Scan started')
-readerUnpair.addEventListener("reading",({message,serialNumber})=>{
-  tagValue=String(serialNumber);
-if(confirm(`Have you scanned ${tagValue} ?`)){
-  tagUnpair.unpairFromTag(tagValue);
-}
 
-})
 
 
 
 addButton.addEventListener("click",async() =>{
   clear();
   let check = new tagAssoc();
+  if(confirm('Do you want to add a new person to the database?')){
 let pers= window.prompt('Please enter a new name to associate');
-check.serialCheck(pers);
-
+check.addPerson(pers);
+  }
 });
-})
