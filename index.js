@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.76");                                                            
+  log("Ver 4.77");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -8,7 +8,8 @@ scanButton.addEventListener("click", async () => {
     let msgValue,msgType;
     let tagObj=null; 
     let beaconObj=null;                                                                                        
-    const reader1 = new NDEFReader();                                                                                                                                                           
+    const reader1 = new NDEFReader();  
+    const controller = new AbortController();                                                                                                                                                         
     await reader1.scan();                                                                                   
     log("> Scan started");                                                                                  
     reader1.addEventListener("error", (event) => {
@@ -41,12 +42,18 @@ scanButton.addEventListener("click", async () => {
       }
     };
 reader1.addEventListener("reading", listener,true);
+controller.signal.onabort = event => {
+  console.log("We're done waiting for NDEF messages.");
+};
+
+// Stop listening to NDEF messages after 3s.
+setTimeout(() => controller.abort(), 3_000);   
   }                                                                                                                                                                                                                                                                                     
 
   catch (error) {                                                                                           
     log("Argh! " + error);                                                                                
   } 
-  await reader1.removeEventListener("reading",listener,true);                                                                                                   
+                                                                                              
 });                                                                                                   
 
 
@@ -54,7 +61,7 @@ unpairButton.addEventListener("click",async() =>{
   clear();
   log('> User clicked the "unpair" button');
   var tagUnpair=new tagAssoc();
-  tagUnpair.unpairFromTag(tagValue);
+  tagUnpair.unpairFromTag(String(serialNumber));
   
   
   }) 
