@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.63");                                                            
+  log("Ver 4.64");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -50,7 +50,7 @@ reader1.addEventListener("reading", ({ message, serialNumber }) => {
 
 unpairButton.addEventListener("click",async() =>{
   //This was just used to erase the association object, right now it does nothing
-log.html("");
+log.clearLog();
 })
 
 
