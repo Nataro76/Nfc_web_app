@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.77");                                                            
+  log("Ver 4.78/testing");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -10,13 +10,13 @@ scanButton.addEventListener("click", async () => {
     let beaconObj=null;                                                                                        
     const reader1 = new NDEFReader();  
     const controller = new AbortController();                                                                                                                                                         
-    await reader1.scan();                                                                                   
+    await reader1.scan({ signal: controller.signal });                                                                                   
     log("> Scan started");                                                                                  
     reader1.addEventListener("error", (event) => {
       log(`Argh! ${event.message}`);
     });                
     var myTag = new tagAssoc();
-    var listener=({ message, serialNumber }) => {  
+    reader1.onreading = event => {  
       log(`> Serial Number: ${serialNumber}`);                                                                
       log(`> Records: (${message.records.length})`);
       for (const record of message.records) {
@@ -41,7 +41,6 @@ scanButton.addEventListener("click", async () => {
         beaconObj =myTag.readMessage(msgValue);
       }
     };
-reader1.addEventListener("reading", listener,true);
 controller.signal.onabort = event => {
   console.log("We're done waiting for NDEF messages.");
 };
