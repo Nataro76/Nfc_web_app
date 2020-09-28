@@ -1,13 +1,6 @@
-var elementCheck = function stopIt(test){
-  if(test){
-  var test = new Event('blue');
-  delete test;
-  }
-}
-
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.73");                                                            
+  log("Ver 4.61");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -61,6 +54,13 @@ reader1.removeEventListener("reading",listener,true);
 
 unpairButton.addEventListener("click",async() =>{
   try{
+    var elementCheck = function stopIt(test){
+      if(test){
+      var test = new Event('blue');
+      delete test;
+      }
+    }
+    
 stopIt('now');
   }
   catch(error){
