@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.74");                                                            
+  log("Ver 4.75");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -51,6 +51,8 @@ reader1.addEventListener("reading", listener,true);
 
 
 unpairButton.addEventListener("click",async() =>{
+  clear();
+  log('> User clicked the "unpair" button');
   var tagUnpair=new tagAssoc();
   tagUnpair.unpairFromTag(tagValue);
   
