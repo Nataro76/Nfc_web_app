@@ -151,17 +151,17 @@ catch(error) {
 }
 
 async function checkForPerson(person,a){
-    let a = a||0;
+    let ab = a||0;
     try {
 const persBeacon = this.storage.find(el => el.PersonID === person);
-if(persBeacon && a!=0){
+if(persBeacon && ab!=0){
     return [true,persBeacon];
     }
-else if(persBeacon && a===0){
+else if(persBeacon && ab===0){
         window.alert(`This Person is already associated with a beacon`);
         }
 else {
-    if(a===0){
+    if(ab===0){
 delete this.storage.PersonID[persIndex];
 window.alert('Person was in database without association, it has been removed');
 storToTemp(person,'tag');
@@ -169,7 +169,7 @@ storToTemp(person,'tag');
 }
 }
 catch(error){
-    if(a===0){
+    if(ab===0){
 storToTemp(person,'tag');
     }
     }
