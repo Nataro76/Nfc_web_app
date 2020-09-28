@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.84");                                                            
+  log("Ver 4.85");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -58,6 +58,7 @@ setTimeout(() => controller.abort(), 20_000);
 
 unpairButton.addEventListener("click",async() =>{
   try{
+    const controller = new AbortController();
   clear();
   controller.abort();
   log('> User clicked the "unpair" button');
