@@ -51,10 +51,12 @@
 unpairButton.addEventListener("click",async() =>{
   //This was just used to erase the association object, right now it does nothing
 clear();
+          log(>Version 2);
 log('> User clicked the "unpair" button');
 reader1.removeEventListener("reading", ({ message, serialNumber }));
 var readerUnpair = new NDEFReader();
 var tagUnpair = new tagAssoc();
+await readerUnpair.scan();
 readerUnpair.addEventListener("reading",({message,serialNumber})=>{
   tagValue=String(serialNumber);
 if(confirm(`Have you scanned ${tagValue} ?`)){
