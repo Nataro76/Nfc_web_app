@@ -150,22 +150,28 @@ catch(error) {
 }
 }
 
-async function checkForPerson(person){
+async function checkForPerson(person,a){
+    let a = a||0;
     try {
 const persBeacon = this.storage.find(el => el.PersonID === person);
-if(persBeacon){
-window.alert(`This Person is already associated with a beacon`);
-return [true,persBeacon];
-}
+if(persBeacon && a!=0){
+    return [true,persBeacon];
+    }
+else if(persBeacon && a===0){
+        window.alert(`This Person is already associated with a beacon`);
+        }
 else {
+    if(a===0){
 delete this.storage.PersonID[persIndex];
 window.alert('Person was in database without association, it has been removed');
 storToTemp(person,'tag');
 }
 }
+}
 catch(error){
+    if(a===0){
 storToTemp(person,'tag');
-
+    }
     }
 }
 
@@ -189,7 +195,7 @@ catch(error){
 
 tagAssoc.prototype.unpairFromTag=function(tag){
     var check=false;
-    check=checkForPerson(tag);
+    check=checkForPerson(tag,1);
     if(check[0]===true){
 this.unpair(tag,check[1]);
     }
