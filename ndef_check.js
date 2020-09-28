@@ -1,5 +1,5 @@
 log = ChromeSamples.log;
-
+clear=ChromeSamples.clearLog;
 if (!("NDEFReader" in window))
   ChromeSamples.setStatus(
     "Web NFC is not available.\n" +
