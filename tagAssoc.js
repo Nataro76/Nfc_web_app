@@ -155,6 +155,7 @@ async function checkForPerson(person){
 const persBeacon = this.storage.find(el => el.PersonID === person);
 if(persBeacon){
 window.alert(`This Person is already associated with a beacon`);
+return [true,persBeacon];
 }
 else {
 delete this.storage.PersonID[persIndex];
@@ -186,6 +187,16 @@ catch(error){
 
 }
 
+tagAssoc.prototype.unpairFromTag=function(tag){
+    var check=false;
+    check=checkForPerson(tag);
+    if(check[0]===true){
+this.unpair(tag,check[1]);
+    }
+    else{
+        window.alert('tag was not associated');
+    }
+}
 
     tagAssoc.prototype.unpair=function(tag,beacon){
         window.alert('unpairing');
