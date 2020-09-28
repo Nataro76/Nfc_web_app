@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.79");                                                            
+  log("Ver 4.8");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -59,9 +59,11 @@ setTimeout(() => controller.abort(), 3_000);
 unpairButton.addEventListener("click",async() =>{
   clear();
   log('> User clicked the "unpair" button');
+  reader1.onreading = ({message,serialNumber}) => {
   var tagUnpair=new tagAssoc();
-  tagUnpair.unpairFromTag(String(serialNumber));
-  
+  let tagValue=String(serialNumber);
+  tagUnpair.unpairFromTag(tagValue);
+  }
   
   }) 
 
