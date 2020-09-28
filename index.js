@@ -1,6 +1,6 @@
 scanButton.addEventListener("click", async () => {      
   //almost everything is displayed in the log() for testing purposes but it has no use and can be erased                                                                                                                                                                          
-  log("Ver 4.71");                                                            
+  log("Ver 4.72");                                                            
   log("User clicked scan button");    
 
   try {          
@@ -15,31 +15,33 @@ scanButton.addEventListener("click", async () => {
       log(`Argh! ${event.message}`);
     });                
     var myTag = new tagAssoc();
-reader1.addEventListener("reading", ({ message, serialNumber }) => {  
-  log(`> Serial Number: ${serialNumber}`);                                                                
-  log(`> Records: (${message.records.length})`);
-  for (const record of message.records) {
-    log(`> Record type:   ${record.recordType}`);
-     switch(record.recordType){
-        case "text":
-  console.assert(record.recordType === "text");
-  const textDecoder = new TextDecoder(record.encoding);
-  msgValue= `Text: ${textDecoder.decode(record.data)} (${record.lang})`;
-  break;
-       default:
-       msgValue=0;
-//this is all to compute the message
-}
-     
-     }
-  if(msgValue==0){
-    tagValue=String(serialNumber);
-    tagObj=myTag.serialCheck(tagValue);
-  }
-  else if(typeof msgValue== 'string'){
-    beaconObj =myTag.readMessage(msgValue);
-  }
-});
+    var listener=({ message, serialNumber }) => {  
+      log(`> Serial Number: ${serialNumber}`);                                                                
+      log(`> Records: (${message.records.length})`);
+      for (const record of message.records) {
+        log(`> Record type:   ${record.recordType}`);
+         switch(record.recordType){
+            case "text":
+      console.assert(record.recordType === "text");
+      const textDecoder = new TextDecoder(record.encoding);
+      msgValue= `Text: ${textDecoder.decode(record.data)} (${record.lang})`;
+      break;
+           default:
+           msgValue=0;
+    //this is all to compute the message
+    }
+         
+         }
+      if(msgValue==0){
+        tagValue=String(serialNumber);
+        tagObj=myTag.serialCheck(tagValue);
+      }
+      else if(typeof msgValue== 'string'){
+        beaconObj =myTag.readMessage(msgValue);
+      }
+    };
+reader1.addEventListener("reading", listener);
+
   }                                                                                                                                                                                                                                                                                     
   
   catch (error) {                                                                                           
@@ -53,7 +55,7 @@ unpairButton.addEventListener("click",async() =>{
 clear();
           log('>Version 2');
 log('> User clicked the "unpair" button');
-reader1.removeEventListener("reading", ({ message, serialNumber }));
+reader1.removeEventListener("reading", listener);
 var readerUnpair = new NDEFReader();
 var tagUnpair = new tagAssoc();
 await readerUnpair.scan();
