@@ -175,6 +175,11 @@ storToTemp(person,'tag');
     }
 }
 
+tagAssoc.prototype.addPerson=function(person){
+//send new person to database
+
+}
+
 async function checkForBeacon(beacon){
     try {
  const beacPers = this.storage.find(el => el.BeaconID === beacon);
